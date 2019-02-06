@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: product-detail-service
+
+server:
+  port: 8021

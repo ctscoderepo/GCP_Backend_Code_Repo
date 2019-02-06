@@ -1,0 +1,49 @@
+﻿{
+  "productList": [
+    {
+      "productName": "Apple iCam",
+      "skuId": "APPLE_CAM",
+      "shortDescription": "Photography becomes smart",
+      "longtDescription": "<p>A few months ago we featured the amazing WVIL camera, by many considered the future of digital photography. This is another very good looking concept, iCam is the vision of Italian designer Antonio DeRosa, the idea is to have a device that attaches to the iPhone 5, which then allows the user to have a camera with interchangeable lenses. The device would also feature a front-touch screen and a projector. Would be great if apple picked up on this and made it reality.</p>",
+      "stockQuantity": "10000",
+      "price": "1300",
+      "currency": "$",
+      "imageUrl": "C:/Inetpub/vhosts/nopCommerce.com/admin-demo.nopCommerce.com/wwwroot/images/thumbs/0000040_apple-icam.jpeg",
+      "category": "Electronics >> Camera & photo;",
+      "weight": "7",
+      "length": "7",
+      "width": "7",
+      "height": "7"
+    },
+    {
+      "productName": "Leica T Mirrorless Digital Camera",
+      "skuId": "LT_MIR_DC",
+      "shortDescription": "Leica T (Typ 701) Silver",
+      "longtDescription": "<p>The new Leica T offers a minimalist design that's crafted from a single block of aluminum.  Made in Germany and assembled by hand, this 16.3 effective mega pixel camera is easy to use.  With a massive 3.7 TFT LCD intuitive touch screen control, the user is able to configure and save their own menu system.  The Leica T has outstanding image quality and also has 16GB of built in memory.  This is Leica's first system camera to use Wi-Fi.  Add the T-App to your portable iOS device and be able to transfer and share your images (free download from the Apple App Store)</p>",
+      "stockQuantity": "10000",
+      "price": "530",
+      "currency": "$",
+      "imageUrl": "C:/Inetpub/vhosts/nopCommerce.com/admin-demo.nopCommerce.com/wwwroot/images/thumbs/0000039_leica-t-mirrorless-digital-camera.jpeg",
+      "category": "Electronics >> Camera & photo;",
+      "weight": "7",
+      "length": "7",
+      "width": "7",
+      "height": "7"
+    },
+    {
+      "productName": "Nikon D5500 DSLR",
+      "skuId": "N5500DS_0",
+      "shortDescription": "Slim, lightweight Nikon D5500 packs a vari-angle touchscreen",
+      "longtDescription": "D5500 replaces the D5300 in Nikon’s range, and while it offers much the same features the company says it’s a much slimmer and lighter prospect. There’s a deep grip for easier handling and built-in Wi-Fi that lets you transfer and share shots via your phone or tablet.",
+      "stockQuantity": "10000",
+      "price": "670",
+      "currency": "$",
+      "imageUrl": "C:/Inetpub/vhosts/nopCommerce.com/admin-demo.nopCommerce.com/wwwroot/images/thumbs/0000035_nikon-d5500-dslr.jpeg",
+      "category": "Electronics >> Camera & photo;",
+      "weight": "2",
+      "length": "2",
+      "width": "2",
+      "height": "2"
+    }
+  ]
+}
