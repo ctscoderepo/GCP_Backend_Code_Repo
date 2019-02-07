@@ -1,7 +1,7 @@
 package com.gcp.productdetail.service;
 
+import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,7 +30,11 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 		Product product = new Product();
 
 		try {
-			byte[] jsonData = Files.readAllBytes(Paths.get("ProductList.txt"));
+			String fileName = "static/ProductList.txt";				
+	        ClassLoader classLoader = new ProductDetailServiceImpl().getClass().getClassLoader();	       	       
+	        File file = new File(classLoader.getResource(fileName).getFile());
+	        
+			byte[] jsonData = Files.readAllBytes(file.toPath());
 			ObjectMapper objectMapper = new ObjectMapper();
 			JsonNode rootNode = objectMapper.readTree(jsonData);
 			JsonNode productsNode = rootNode.path("productList");
@@ -69,7 +73,11 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 	public List<Product> getProductList() {
 		List<Product> productList = new ArrayList<Product>();
 		try {
-			byte[] jsonData = Files.readAllBytes(Paths.get("ProductList.txt"));
+			String fileName = "static/ProductList.txt";
+	        ClassLoader classLoader = new ProductDetailServiceImpl().getClass().getClassLoader();
+	        File file = new File(classLoader.getResource(fileName).getFile());
+			
+			byte[] jsonData = Files.readAllBytes(file.toPath());
 			ObjectMapper objectMapper = new ObjectMapper();
 			JsonNode rootNode = objectMapper.readTree(jsonData);
 			JsonNode productsNode = rootNode.path("productList");
