@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gcp.productdetail.domain.Product;
@@ -14,7 +16,8 @@ import com.gcp.productdetail.util.ProductCommonUtil;
 /**
  * @author Anuj Kumar
  * 
- *  This service declared to have getProductDetail & getProductList method implementation
+ *         This service declared to have getProductDetail & getProductList
+ *         method implementation
  */
 @Service
 public class ProductDetailServiceImpl implements ProductDetailService {
@@ -30,10 +33,9 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 		Product product = new Product();
 
 		try {
-			String fileName = "static/ProductList.txt";				
-	        ClassLoader classLoader = new ProductDetailServiceImpl().getClass().getClassLoader();	       	       
-	        File file = new File(classLoader.getResource(fileName).getFile());
-	        
+			String fileName = "classpath:static/ProductList.txt";
+			File file = ResourceUtils.getFile(fileName);
+
 			byte[] jsonData = Files.readAllBytes(file.toPath());
 			ObjectMapper objectMapper = new ObjectMapper();
 			JsonNode rootNode = objectMapper.readTree(jsonData);
@@ -73,10 +75,9 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 	public List<Product> getProductList() {
 		List<Product> productList = new ArrayList<Product>();
 		try {
-			String fileName = "static/ProductList.txt";
-	        ClassLoader classLoader = new ProductDetailServiceImpl().getClass().getClassLoader();
-	        File file = new File(classLoader.getResource(fileName).getFile());
-			
+			String fileName = "classpath:static/ProductList.txt";
+			File file = ResourceUtils.getFile(fileName);
+
 			byte[] jsonData = Files.readAllBytes(file.toPath());
 			ObjectMapper objectMapper = new ObjectMapper();
 			JsonNode rootNode = objectMapper.readTree(jsonData);
