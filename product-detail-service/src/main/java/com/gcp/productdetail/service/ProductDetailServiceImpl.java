@@ -1,10 +1,15 @@
 package com.gcp.productdetail.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -33,12 +38,20 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 		Product product = new Product();
 
 		try {
-			String fileName = "classpath:static/ProductList.txt";
-			File file = ResourceUtils.getFile(fileName);
-
-			byte[] jsonData = Files.readAllBytes(file.toPath());
+			String fileName = "static/ProductList.txt";
+			/*
+			 * ClassLoader classLoader = new
+			 * ProductDetailServiceImpl().getClass().getClassLoader(); File file
+			 * = new File(classLoader.getResource(fileName).getFile());
+			 */
+			// File file = ResourceUtils.getFile(fileName);
+			// byte[] jsonData = Files.readAllBytes(file.toPath());
+			//using to read inputStream 
+			byte[] byteArray = new byte[4024];
+			InputStream inputStream = new ClassPathResource(fileName).getInputStream();
+			inputStream.read(byteArray);			
 			ObjectMapper objectMapper = new ObjectMapper();
-			JsonNode rootNode = objectMapper.readTree(jsonData);
+			JsonNode rootNode = objectMapper.readTree(byteArray);
 			JsonNode productsNode = rootNode.path("productList");
 
 			Iterator<JsonNode> prdItr = productsNode.elements();
@@ -75,12 +88,20 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 	public List<Product> getProductList() {
 		List<Product> productList = new ArrayList<Product>();
 		try {
-			String fileName = "classpath:static/ProductList.txt";
-			File file = ResourceUtils.getFile(fileName);
-
-			byte[] jsonData = Files.readAllBytes(file.toPath());
+			String fileName = "static/ProductList.txt";
+			/*
+			 * ClassLoader classLoader = new
+			 * ProductDetailServiceImpl().getClass().getClassLoader(); File file
+			 * = new File(classLoader.getResource(fileName).getFile());
+			 * 
+			 * byte[] jsonData = Files.readAllBytes(file.toPath());
+			 */
+			//using to read inputStream 
+			byte[] byteArray = new byte[4024];
+			InputStream inputStream = new ClassPathResource(fileName).getInputStream();		
+			inputStream.read(byteArray);
 			ObjectMapper objectMapper = new ObjectMapper();
-			JsonNode rootNode = objectMapper.readTree(jsonData);
+			JsonNode rootNode = objectMapper.readTree(byteArray);
 			JsonNode productsNode = rootNode.path("productList");
 
 			Iterator<JsonNode> prdItr = productsNode.elements();
