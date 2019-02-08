@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: be
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: be
+  template:
+    metadata:
+      labels:
+        app: be
+    spec:
+      containers:
+      - name: spring-backend
+        image: gcr.io/next-2019/ecomm/backend:v1
+        ports:
+        - containerPort: 80
