@@ -46,7 +46,8 @@ public class UserController {
 	public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result ){
 		logger.info("Start registerUser method: ", UserController.class.getName());
 		logger.debug("User request: ", user.toString());
-		System.out.println("User request: "+user.toString());
+		
+		System.out.println("User request ****************: "+user.toString());
 		
 		//To validate the request
 		ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);

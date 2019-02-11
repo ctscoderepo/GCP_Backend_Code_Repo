@@ -64,7 +64,9 @@ public class UserServiceImpl implements UserService {
 		String response = "";
 
 		System.out.println("*************: "+userDetail.getLogonId()+" "+userDetail.getPassword());
+		
 		User user = userRepository.findUserByLogonIdAndPassword(userDetail.getLogonId(), userDetail.getPassword());
+	
 		if(user!=null)
 			response = "User login successful.";
 		else
