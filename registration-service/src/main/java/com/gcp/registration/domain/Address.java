@@ -10,12 +10,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import lombok.Data;
 
 /**
  * @author Anuj Kumar
  * 
- * This class is domain to create address table
+ *         This class is domain to create address table
  */
 @Data
 @Entity
@@ -23,31 +24,33 @@ import lombok.Data;
 public class Address {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-    
-	@NotBlank(message="First name is required")
-	private String firstName;
-	
-	@NotBlank(message="Last name is required")
-	private String lastName;
-		
-	@NotBlank(message="Email is required")	
-	private String email;
-	
-    private String phoneNumber;
 
-    @Temporal(TemporalType.DATE)
-    private Date dateOfBirth;
-    private String address1;
-    private String address2;
-    private String city;
-    private String state;
-    private String country;
-    private String zipCode;      
-    private String status;    
-    private String addressType;
-    
-    @OneToOne(mappedBy = "address")
-    private User user;
+	@NotBlank(message = "First name is required")
+	private String firstName;
+
+	@NotBlank(message = "Last name is required")
+	private String lastName;
+
+	@NotBlank(message = "Email is required")
+	@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\." + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Please provide a valid email address")
+	private String email;
+
+	private String phoneNumber;
+
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
+	private String address1;
+	private String address2;
+	private String city;
+	private String state;
+	private String country;
+	private String zipCode;
+	private String status;
+	private String addressType;
+
+	@OneToOne(mappedBy = "address")
+	private User user;
 }

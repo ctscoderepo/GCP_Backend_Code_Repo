@@ -1,6 +1,6 @@
-drop table backend.address;
+drop table gcpdemo.address;
 
-drop table backend.user;
+drop table gcpdemo.user;
 
 CREATE TABLE IF NOT EXISTS gcpdemo.address(
     id INT AUTO_INCREMENT,
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS gcpdemo.address(
 
 CREATE TABLE IF NOT EXISTS gcpdemo.user(
     id INT AUTO_INCREMENT,
-    logon_id VARCHAR(255) NOT NULL,
+    logon_id VARCHAR(255) NOT NULL UNIQUE,
     password  VARCHAR(255) NOT NULL,
     create_at DATE,
     updated_at DATE,
@@ -31,17 +31,4 @@ CREATE TABLE IF NOT EXISTS gcpdemo.user(
     CONSTRAINT FK_UserAddress FOREIGN KEY (address_id)
     REFERENCES address(id)
 );
-
-CREATE TABLE IF NOT EXISTS gcpdemo.user(
-    id INT AUTO_INCREMENT,
-    logon_id VARCHAR(255) NOT NULL,
-    password  VARCHAR(255) NOT NULL,
-    create_at DATE,
-    updated_at DATE,
-    address_id INT,
-    PRIMARY KEY (id),
-    CONSTRAINT FK_UserAddress FOREIGN KEY (address_id)
-    REFERENCES address(id)
-);
-
 commit;

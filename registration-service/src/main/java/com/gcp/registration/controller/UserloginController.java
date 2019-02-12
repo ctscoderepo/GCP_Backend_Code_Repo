@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.gcp.registration.domain.Response;
 import com.gcp.registration.domain.UserDetail;
 import com.gcp.registration.service.MapValidationErrorService;
 import com.gcp.registration.service.UserService;
@@ -51,9 +52,9 @@ public class UserloginController {
 		ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if(errorMap!=null) return errorMap;
         
-		String response = userService.findUserByLogonIdAndPassword(userDetail);		
+        Response response = userService.findUserByLogonIdAndPassword(userDetail);		
 		logger.debug("User response:", response);
 		logger.info("End registerUser method:", UserloginController.class.getName());
-		return new ResponseEntity<String>(response, HttpStatus.OK);
+		return new ResponseEntity<Response>(response, HttpStatus.OK);
 	}	
 }
