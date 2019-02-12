@@ -34,7 +34,7 @@ public class User {
 	private Long id;
 
 	@NotBlank(message = "LogonId is required")
-	@Column(name = "logon_id", unique = true)
+	@Column(name = "logonId", unique = true)
 	private String logonId;
 
 	@NotBlank(message = "Password is required")

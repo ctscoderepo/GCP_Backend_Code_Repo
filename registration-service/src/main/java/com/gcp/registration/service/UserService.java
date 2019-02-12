@@ -1,5 +1,6 @@
 package com.gcp.registration.service;
 
+import com.gcp.registration.domain.Response;
 import com.gcp.registration.domain.User;
 import com.gcp.registration.domain.UserDetail;
 
@@ -22,7 +23,7 @@ public interface UserService {
 	 * This method is used to authenticate the user logon
 	 * 
 	 * @param userDetail
-	 * @return String
+	 * @return Response
 	 */
-	String findUserByLogonIdAndPassword(UserDetail userDetail);
+	Response findUserByLogonIdAndPassword(UserDetail userDetail);
 }
