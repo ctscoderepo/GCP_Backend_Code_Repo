@@ -1,0 +1,133 @@
+{
+  "mappings": {
+    "product": {
+      "properties": {
+        "id": {
+          "type": "text",
+          "index": false,
+          "doc_values": false,
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "condition": {
+          "type": "text"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "displayName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "description": {
+          "type": "text"
+        },
+        "brand": {
+          "type": "text"
+        },
+        "tags": {
+          "type": "text"
+        },
+        "longDescription": {
+          "type": "text"
+        },
+        "details": {
+          "type": "nested",
+          "properties": {
+            "name": {
+              "type": "keyword"
+            },
+            "value": {
+              "type": "text"
+            }
+          }
+        },
+        "features": {
+          "type": "text"
+        },
+        "digital": {
+          "type": "boolean"
+        },
+        "childProductIds": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "canonicalUrl": {
+          "type": "text"
+        },
+        "media": {
+          "type": "nested",
+          "properties": {
+            "thumbnailImage": {
+              "type": "text"
+            },
+            "mediumImage": {
+              "type": "text"
+            },
+            "largeImage": {
+              "type": "text"
+            }
+          }
+        },
+        "skus": {
+          "type": "nested",
+          "properties": {
+            "id": {
+              "type": "keyword"
+            },
+            "regularPrice": {
+              "type": "double"
+            },
+            "salePrice": {
+              "type": "text"
+            },
+            "color": {
+              "type": "text"
+            },
+            "stockLevel": {
+              "type": "integer"
+            },
+            "inStock": {
+              "type": "boolean"
+            },
+            "onSale": {
+              "type": "boolean"
+            },
+            "size": {
+              "type": "text"
+            },
+            "sellable": {
+              "type": "boolean"
+            },
+            "media": {
+              "type": "nested",
+              "properties": {
+                "imageType": {
+                  "type": "text"
+                },
+                "url": {
+                  "type": "text"
+                }
+              }
+            }
+          }
+        },
+        "sellableDate": {
+          "type": "date",
+          "format": "yyyy-MM-dd'T'HH:mm:ssZ"
+        }
+      }
+    }
+  }
+}

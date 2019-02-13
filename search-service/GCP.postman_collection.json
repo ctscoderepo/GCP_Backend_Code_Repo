@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "91f57838-16b5-48c0-b21c-1565a2ab2819",
+		"name": "GCP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Keyword (Apparel)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/keywordsearch?keyword=Apparel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"keywordsearch"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "Apparel"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Selectd brands (Nike, Adidas)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/keywordsearch?keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceLow%22%3A20%7D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"keywordsearch"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "Apparel"
+						},
+						{
+							"key": "filterOptions",
+							"value": "%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceLow%22%3A20%7D"
+						},
+						{
+							"key": "op",
+							"value": "search",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KeywordSearch (Brands, Price)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/keywordsearch?keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"keywordsearch"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "Apparel"
+						},
+						{
+							"key": "filterOptions",
+							"value": "%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D"
+						},
+						{
+							"key": "op",
+							"value": "search",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guided search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/search?category1=Apparel&category2=Clothing",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "category1",
+							"value": "Apparel"
+						},
+						{
+							"key": "category2",
+							"value": "Clothing"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/LV_511_JN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"LV_511_JN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guided search with filters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/search?category1=Apparel&category2=Clothing&keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "category1",
+							"value": "Apparel"
+						},
+						{
+							"key": "category2",
+							"value": "Clothing"
+						},
+						{
+							"key": "keyword",
+							"value": "Apparel"
+						},
+						{
+							"key": "filterOptions",
+							"value": "%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

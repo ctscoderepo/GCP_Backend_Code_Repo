@@ -1,0 +1,117 @@
+{
+  "settings": {
+    "analysis": {
+      "normalizer": {
+        "custom_sort_normalizer": {
+          "type": "custom",
+          "char_filter": [],
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "id": {
+          "type": "text",
+          "index": false,
+          "doc_values": false,
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            }
+          }
+        },
+        "productName": {
+          "type": "text",
+          "doc_values": false,
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "normalizer": "custom_sort_normalizer"
+            }
+          }
+        },
+        "shortDescription": {
+          "type": "text",
+          "doc_values": false
+        },
+        "longDescription": {
+          "type": "text",
+          "index": "false",
+          "doc_values": false
+        },
+        "canonicalUrl": {
+          "type": "text",
+          "index": false,
+          "doc_values": false
+        },
+        "brand": {
+          "type": "keyword"
+        },
+        "skuId": {
+          "type": "keyword",
+          "doc_values": false
+        },
+        "stockQuantity": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "double"
+        },
+        "currencyCode": {
+          "type": "text",
+          "index": false,
+          "doc_values": false
+        },
+        "weight": {
+          "type": "keyword"
+        },
+        "length": {
+          "type": "keyword"
+        },
+        "width": {
+          "type": "keyword"
+        },
+        "height": {
+          "type": "keyword"
+        },
+        "category1": {
+          "type": "keyword"
+        },
+        "category2": {
+          "type": "keyword"
+        },
+        "image1": {
+          "type": "text",
+          "index": false,
+          "doc_values": false
+        },
+        "image2": {
+          "type": "text",
+          "index": false,
+          "doc_values": false
+        },
+        "image3": {
+          "type": "text",
+          "index": false,
+          "doc_values": false
+        },
+        "image4": {
+          "type": "text",
+          "index": false,
+          "doc_values": false
+        },
+        "image5": {
+          "type": "text",
+          "index": false,
+          "doc_values": false
+        }
+      }
+    }
+  }
+}
