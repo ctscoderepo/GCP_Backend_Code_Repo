@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -29,15 +28,15 @@ public class SearchController {
     @GetMapping("/keywordsearch")
     @SneakyThrows
     public SearchResult executeKeywordSearch(String keyword,
-                                             Optional<String> filterOptions, String sortBy) {
-        return service.searchByKeyword(keyword, getFilterOptions(filterOptions), Constants.toSortBy(sortBy));
+                                             @RequestParam(required = false) String filterOptions, String sortBy) {
+        return service.searchByKeyword(keyword, getFilterOptions(Optional.ofNullable(filterOptions)), Constants.toSortBy(sortBy));
     }
 
     @GetMapping("/search")
     @SneakyThrows
     public SearchResult executeGuidedSearch(String category1, String category2,
-                                            Optional<String> filterOptions, String sortBy) {
-        return service.searchByCategory(category1, category2, getFilterOptions(filterOptions), Constants.toSortBy(sortBy));
+                                            @RequestParam(required = false) String filterOptions, String sortBy) {
+        return service.searchByCategory(category1, category2, getFilterOptions(Optional.ofNullable(filterOptions)), Constants.toSortBy(sortBy));
     }
 
     @GetMapping("/products/{productId}")
@@ -48,8 +47,8 @@ public class SearchController {
 
     @SneakyThrows
     private Optional<FilterOptions> getFilterOptions(Optional<String> filterOptions) throws IOException {
-        if (filterOptions == null || !filterOptions.isPresent())
-            return null;
+        if (!filterOptions.isPresent())
+            return Optional.empty();
         return Optional.of(mapper.readValue(filterOptions.get(), FilterOptions.class));
     }
 

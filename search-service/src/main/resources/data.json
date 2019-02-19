@@ -14,13 +14,13 @@
     "category1": "Electronics",
     "category2": "Camera & photo",
     "brand": "Apple",
-    "image1": "0000040_apple-icam",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000040_apple-icam.jpeg",
     "image2": "",
     "image3": ""
   },
   {
     "productName": "Beats Pill 2.0 Wireless Speaker",
-    "shortDescription": "<b>Pill 2.0 Portable Bluetooth Speaker (1-Piece):</b> Watch your favorite movies and listen to music with striking sound quality. This lightweight, portable speaker is easy to take with you as you travel to any destination, keeping you entertained wherever you are.",
+    "shortDescription": "<b>Pill 2.0 Portable Bluetooth Speaker (1-Piece):</b> Watch your favorite movies and listen to music with striking sound quality. This lightweight, portable speaker is easy to take with you as you travel to any destination, keeping you entertained wherever you are. ",
     "longDescription": "<ul><li>Pair and play with your Bluetooth® device with 30 foot range</li><li>Built-in speakerphone</li><li>7 hour rechargeable battery</li><li>Power your other devices with USB charge out</li><li>Tap two Beats Pills™ together for twice the sound with Beats Bond™</li></ul>",
     "skuId": "BP_20_WSP",
     "stockQuantity": 10000,
@@ -33,7 +33,7 @@
     "category1": "Electronics",
     "category2": "Others",
     "brand": "Apple",
-    "image1": "0000045_beats-pill-20-wireless-speaker_415",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000045_beats-pill-20-wireless-speaker_415.jpeg",
     "image2": "",
     "image3": ""
   },
@@ -52,7 +52,7 @@
     "category1": "Electronics",
     "category2": "Cell phones",
     "brand": "HTC",
-    "image1": "0000041_htc-one-m8-android-l-50-lollipop_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000041_htc-one-m8-android-l-50-lollipop_550.jpeg",
     "image2": "",
     "image3": ""
   },
@@ -71,8 +71,8 @@
     "category1": "Electronics",
     "category2": "Cell phones",
     "brand": "HTC",
-    "image1": "0000042_htc-one-mini-blue_550",
-    "image2": "0000043_htc-one-mini-blue_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000042_htc-one-mini-blue_550.jpeg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/electronics/0000043_htc-one-mini-blue_550.jpeg",
     "image3": ""
   },
   {
@@ -90,7 +90,7 @@
     "category1": "Electronics",
     "category2": "Camera & photo",
     "brand": "Leica",
-    "image1": "0000039_leica-t-mirrorless-digital-camera_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000039_leica-t-mirrorless-digital-camera_550.jpeg",
     "image2": "",
     "image3": ""
   },
@@ -109,8 +109,8 @@
     "category1": "Electronics",
     "category2": "Camera & photo",
     "brand": "Nikon",
-    "image1": "0000035_nikon-d5500-dslr_550",
-    "image2": "0000036_nikon-d5500-dslr_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000035_nikon-d5500-dslr_550.jpeg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/electronics/0000036_nikon-d5500-dslr_550.jpeg",
     "image3": ""
   },
   {
@@ -128,7 +128,7 @@
     "category1": "Electronics",
     "category2": "Cell phones",
     "brand": "Nokia",
-    "image1": "0000044_nokia-lumia-1020_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000044_nokia-lumia-1020_550.jpeg",
     "image2": "",
     "image3": ""
   },
@@ -147,7 +147,7 @@
     "category1": "Electronics",
     "category2": "Others",
     "brand": "",
-    "image1": "0000046_beats-pill-20-wireless-speaker_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000046_beats-pill-20-wireless-speaker_550.jpeg",
     "image2": "",
     "image3": ""
   },
@@ -166,7 +166,7 @@
     "category1": "Electronics",
     "category2": "Others",
     "brand": "Universal",
-    "image1": "0000048_portable-sound-speakers_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/electronics/0000048_portable-sound-speakers_550.jpeg",
     "image2": "",
     "image3": ""
   },
@@ -185,9 +185,9 @@
     "category1": "Apparel",
     "category2": "Shoes",
     "brand": "Adidas",
-    "image1": "0000053_adidas-consortium-campus-80s-running-shoes",
-    "image2": "0000054_adidas-consortium-campus-80s-running-shoes_550",
-    "image3": "0000055_adidas-consortium-campus-80s-running-shoes_550"
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000053_adidas-consortium-campus-80s-running-shoes.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/appreals/0000054_adidas-consortium-campus-80s-running-shoes_550.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/appreals/0000055_adidas-consortium-campus-80s-running-shoes_550.jpg"
   },
   {
     "productName": "Custom T-Shirt",
@@ -204,7 +204,7 @@
     "category1": "Apparel",
     "category2": "Clothing",
     "brand": "",
-    "image1": "0000059_custom-t-shirt_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000059_custom-t-shirt_550.jpg",
     "image2": "",
     "image3": ""
   },
@@ -223,8 +223,8 @@
     "category1": "Apparel",
     "category2": "Clothing",
     "brand": "Levi's",
-    "image1": "0000060_levis-511-jeans_550",
-    "image2": "0000061_levis-511-jeans_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000060_levis-511-jeans_550.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/appreals/0000061_levis-511-jeans_550.jpg",
     "image3": ""
   },
   {
@@ -242,12 +242,12 @@
     "category1": "Apparel",
     "category2": "Shoes",
     "brand": "Nike",
-    "image1": "0000051_nike-floral-roshe-customized-running-shoes_550",
-    "image2": "0000052_nike-floral-roshe-customized-running-shoes_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000051_nike-floral-roshe-customized-running-shoes_550.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/appreals/0000052_nike-floral-roshe-customized-running-shoes_550.jpg",
     "image3": ""
   },
   {
-    "productName": "Nike SB Zoom Stefan Janoski \"Medium Mint",
+    "productName": "Nike SB Zoom Stefan Janoski \"Medium Mint\"",
     "shortDescription": "Nike SB Zoom Stefan Janoski Dark Grey Medium Mint Teal ...",
     "longDescription": "The newly Nike SB Zoom Stefan Janoski gets hit with a \"Medium Mint\" accents that sits atop a Dark Grey suede. Expected to drop in October.",
     "skuId": "NK_ZSJ_MM",
@@ -261,7 +261,7 @@
     "category1": "Apparel",
     "category2": "Shoes",
     "brand": "Nike",
-    "image1": "0000056_nike-sb-zoom-stefan-janoski-medium-mint_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000056_nike-sb-zoom-stefan-janoski-medium-mint_550.jpg",
     "image2": "",
     "image3": ""
   },
@@ -280,7 +280,7 @@
     "category1": "Apparel",
     "category2": "Clothing",
     "brand": "Nike",
-    "image1": "0000057_nike-tailwind-loose-short-sleeve-running-shirt_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000057_nike-tailwind-loose-short-sleeve-running-shirt_550.jpg",
     "image2": "",
     "image3": ""
   },
@@ -299,7 +299,7 @@
     "category1": "Apparel",
     "category2": "Accessories",
     "brand": "",
-    "image1": "0000062_obey-propaganda-hat_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000062_obey-propaganda-hat_550.jpg",
     "image2": "",
     "image3": ""
   },
@@ -318,7 +318,7 @@
     "category1": "Apparel",
     "category2": "Clothing",
     "brand": "",
-    "image1": "0000058_oversized-women-t-shirt_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000058_oversized-women-t-shirt_550.jpg",
     "image2": "",
     "image3": ""
   },
@@ -337,7 +337,7 @@
     "category1": "Apparel",
     "category2": "Accessories",
     "brand": "Ray Ban",
-    "image1": "0000064_ray-ban-aviator-sunglasses_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000064_ray-ban-aviator-sunglasses_550.jpg",
     "image2": "",
     "image3": ""
   },
@@ -356,7 +356,7 @@
     "category1": "Apparel",
     "category2": "Accessories",
     "brand": "",
-    "image1": "0000063_reversible-horseferry-check-belt_550",
+    "image1": "https://storage.googleapis.com/gcpimage/images/appreals/0000063_reversible-horseferry-check-belt_550.jpg",
     "image2": "",
     "image3": ""
   },
@@ -364,7 +364,7 @@
     "productName": "Amanti Art",
     "shortDescription": "Dawn Magic 1 by Charles Craig Framed Wall Art",
     "longDescription": "<p>A single gull dots the sky above the sunrise and sea oats of this beach scene. This casual print can bring a bit of coastal charm and beauty to any room in your home or office. This Amanti Art Decorative Framed Art Piece is a home decor item you can be proud to showcase on your wall. Our craftsmen handmake this piece in a small custom art and frame shop in America's heartland. We know that each decoration you choose for your home, be it for your living room, foyer, kitchen, bedroom, bathroom or other space, is a reflection of your style and taste. This image comes framed in a variety of colors and sizes that you can select. Choose from casual, traditional, modern, contemporary, country rustic or shabby chic styles. All pieces have durable wires already afixed to the back for easy hanging and installation. We hope you're pleased with your Amanti Art purchase.</p>",
-    "skuId": 304274722,
+    "skuId": "304274722",
     "stockQuantity": 1000,
     "price": 170,
     "currencyCode": "USD",
@@ -375,15 +375,15 @@
     "category1": "Home Décor",
     "category2": "Art Prints",
     "brand": "",
-    "image1": "whitewash-cream-amanti-art-art-prints-dsw4358208-64_1000",
-    "image2": "whitewash-cream-amanti-art-art-prints-dsw4358208-1f_145",
-    "image3": "whitewash-cream-amanti-art-art-prints-dsw4358208-fa_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/whitewash-cream-amanti-art-art-prints-dsw4358208-64_1000.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/whitewash-cream-amanti-art-art-prints-dsw4358208-1f_145.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/whitewash-cream-amanti-art-art-prints-dsw4358208-fa_145.jpg"
   },
   {
     "productName": "Regal",
     "shortDescription": "29 in. Aqua Sunburst Sun",
     "longDescription": "<p>Regal's impressive Aqua Sunburst Sun has a beautiful marbled rustic lacquer finish, which is accented with muted metallic coloring. Carefully crafted from sturdy metal, the hand-painted colors and powder coat lets you display the piece in any indoor or outdoor space. Its weather resistant finish and overall durable construction will allow enjoyment for many years to come. Regal Art & Gift is a leading designer of high-quality home and garden decor. For over 25 years we have continued to raise the bar by bringing innovation, sophistication, and exclusivity to our products. Perfect for any home or occasion, you can rest assured of your purchase with our 1-year limited warranty. <ul> <li>29 in. x 1.25 in. x 29 in.</li> <li>Weather-resistant powder coating, great for both indoor and outdoor use</li> <li>Hand-painted with a marbled lacquer finish</li> <li>Durable metal construction</li> <li>No assembly required</li> </ul> </p>",
-    "skuId": 304274716,
+    "skuId": "304274716",
     "stockQuantity": 1000,
     "price": 60,
     "currencyCode": "USD",
@@ -394,7 +394,7 @@
     "category1": "Home Décor",
     "category2": "Art Prints",
     "brand": "",
-    "image1": "regal-outdoor-wall-art-10200-64_1000",
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/regal-outdoor-wall-art-10200-64_1000.jpg",
     "image2": "",
     "image3": ""
   },
@@ -402,7 +402,7 @@
     "productName": "Yosemite Home Décor",
     "shortDescription": "39.4 in x 39.4 in \"Magnificent Storm\" by Yosemite Hand Painted Canvas Wall Art",
     "longDescription": "<p>This abstract piece of artwork will look incredibly beautiful in your home. Fabulous wavy designs fill the canvas. Colors of grey and blue and gold gorgeously mix and melt together harmoniously to create a lovely piece of decor. Take this painting home today to enjoy in your home or office space. <ul> <li>Neutral tones give your wall an added appeal</li> <li>Gallery wrapped for an added appeal to you decor</li> <li>39.4 in. x 39.4 in. abstract piece will add a unique quality to your home or office</li> <li>Mounting hardware included, comes ready to hang</li> </ul> </p>",
-    "skuId": 302643811,
+    "skuId": "302643811",
     "stockQuantity": 1000,
     "price": 171,
     "currencyCode": "USD",
@@ -413,15 +413,15 @@
     "category1": "Home Décor",
     "category2": "Art Prints",
     "brand": "",
-    "image1": "multi-yosemite-home-decor-canvas-art-fcs11526-2-64_1000",
-    "image2": "multi-yosemite-home-decor-canvas-art-fcs11526-2-c3_145",
-    "image3": "multi-yosemite-home-decor-canvas-art-fcs11526-2-1f_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/multi-yosemite-home-decor-canvas-art-fcs11526-2-64_1000.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/multi-yosemite-home-decor-canvas-art-fcs11526-2-c3_145.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/multi-yosemite-home-decor-canvas-art-fcs11526-2-1f_145.jpg"
   },
   {
     "productName": "Yosemite Peacock Home Decor",
     "shortDescription": "48 in. x 48 in. Peacock flourish",
     "longDescription": "<p>This vibrantly colored peacock is strutting its stuff while showing off a beautiful array of animated feathers. The multi-colored feathers adorning this peacock are creatively painted with mixed patterns, colors and textures. Some feathers have pieces of crinkled aluminum, newspaper, colorful fabric and woven straw patches that are made to resemble peacock feathers. Each texture and pattern adds playfulness and character to the painting blending them with the bold brush strokes in a dynamic way. This painting is perfect for those who like to express themselves through the many hues of life. This hand crafted painting is lively and would be great for a living room or bedroom.</p>",
-    "skuId": 206633921,
+    "skuId": "206633921",
     "stockQuantity": 1000,
     "price": 200,
     "currencyCode": "USD",
@@ -432,15 +432,15 @@
     "category1": "Home Décor",
     "category2": "Art Prints",
     "brand": "",
-    "image1": "multi-yosemite-home-decor-canvas-art-artad0140d-64_1000",
-    "image2": "multi-yosemite-home-decor-canvas-art-artad0140d-4f_145",
-    "image3": "multi-yosemite-home-decor-canvas-art-artad0140d-1f_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/multi-yosemite-home-decor-canvas-art-artad0140d-64_1000.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/multi-yosemite-home-decor-canvas-art-artad0140d-4f_145.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/multi-yosemite-home-decor-canvas-art-artad0140d-1f_145.jpg"
   },
   {
     "productName": "Sea Gull Lighting Lighting",
     "shortDescription": "Alturas 32.5 in. W. 9-Light Satin Bronze Chandelier",
     "longDescription": "<p>The silhouette of the modern Alturas lighting collection by Sea Gull Lighting features an interlocking, spherical steel frame, which harkens back to the Unisphere constructed for the 1964 New York World's Fair. The minimalist Alturas Collection draws the eye to the soft, warm glow of the light emitted from the cylindrical Satin Etched glass shades. The full assortment includes 3-light, 5-light and 9-light chandeliers, a 1-light mini pendant, a 3-light pendant, a 2-light semi flush which is convertible into a pendant, and one-,2-light, 3-light and 4-light bath fixtures. All fixtures are offered in Brushed Nickel and Satin Bronze finishes, the bath fixtures are also offered in Chrome finish. Incandescent and ENERGY STAR-qualified LED lamping are available. <ul> <li>Modern design with contemporary bronze finish and white glass</li> <li>Uses nine 60-Watt bulbs, sold separately</li> </ul></p>",
-    "skuId": 301196623,
+    "skuId": "301196623",
     "stockQuantity": 1000,
     "price": 110,
     "currencyCode": "USD",
@@ -451,15 +451,15 @@
     "category1": "Home Décor",
     "category2": "Lighting",
     "brand": "",
-    "image1": "satin-bronze-sea-gull-lighting-chandeliers-3124609-848-64_1000",
-    "image2": "satin-bronze-sea-gull-lighting-chandeliers-3124609-848-c3_1000",
-    "image3": "satin-bronze-sea-gull-lighting-chandeliers-3124609-848-4f_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/satin-bronze-sea-gull-lighting-chandeliers-3124609-848-64_1000.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/satin-bronze-sea-gull-lighting-chandeliers-3124609-848-c3_1000.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/satin-bronze-sea-gull-lighting-chandeliers-3124609-848-4f_145.jpg"
   },
   {
     "productName": "Progress Lighting",
     "shortDescription": "Noma Collection 9-light Polished Nickel Chandelier with Etched Glass Shade",
     "longDescription": "<p> Mixed finishes of Polished Nickel with Silver Ridge accents are highlighted in Noma. Soft angles and curving lines created from flat metal straps elegantly frame etched white glass shades. The nine-light, two-tier chandelier is part of our Design Series collections. <ul> <li>Polished nickel finish</li> <li>Silver ridge accents</li> <li>Etched white glass shades</li> <li>Features soft angles and curved lines</li> <li>Flat metal straps form elegant frame</li> <li>Adds flair to any dining room or great room space</li> </ul> </p>",
-    "skuId": 301219921,
+    "skuId": "301219921",
     "stockQuantity": 1000,
     "price": 665,
     "currencyCode": "USD",
@@ -470,7 +470,7 @@
     "category1": "Home Décor",
     "category2": "Lighting",
     "brand": "",
-    "image1": "polished-nickel-progress-lighting-chandeliers-p400013-104-64_1000",
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/polished-nickel-progress-lighting-chandeliers-p400013-104-64_1000.jpg",
     "image2": "",
     "image3": ""
   },
@@ -478,7 +478,7 @@
     "productName": "Sea Gull Lighting",
     "shortDescription": "Perryton 12.25 in. W. 4-Light Blacksmith Hall-Foyer Pendant",
     "longDescription": "<p>The Sea Gull Lighting Perryton 4-light hall/foyer pendant in blacksmith provides abundant light to your home, while adding style and interest. The transitional Perryton pendant light collection by Sea Gull Lighting is inspired by stately, carriage lanterns. The updated open frame is formed with sleek square steel tubing and each pendant is a generously proportioned, minimalist silhouette completed in a Blacksmith finish. Damp rated, Perryton is also ideal as a focal point on a covered patio or porch.</p>",
-    "skuId": 206893696,
+    "skuId": "206893696",
     "stockQuantity": 1000,
     "price": 225,
     "currencyCode": "USD",
@@ -489,15 +489,15 @@
     "category1": "Home Décor",
     "category2": "Lighting",
     "brand": "",
-    "image1": "blacksmith-sea-gull-lighting-pendant-lights-5215004-839-64_145",
-    "image2": "blacksmith-sea-gull-lighting-pendant-lights-5215004-839-c3_145",
-    "image3": "blacksmith-sea-gull-lighting-pendant-lights-5215004-839-1f_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/blacksmith-sea-gull-lighting-pendant-lights-5215004-839-64_145.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/blacksmith-sea-gull-lighting-pendant-lights-5215004-839-c3_145.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/blacksmith-sea-gull-lighting-pendant-lights-5215004-839-1f_145.jpg"
   },
   {
     "productName": "Litton Lane",
     "shortDescription": "8 in. x 6 in. Brown Wood and Clear Glass Cloche",
     "longDescription": "<p>Keeps desserts, pastries and other food items clean and fresh Can be used to hold or display various decor and accessories Brings style and essential function to your living spac</p>",
-    "skuId": 302268108,
+    "skuId": "302268108",
     "stockQuantity": 1000,
     "price": 40,
     "currencyCode": "USD",
@@ -508,15 +508,15 @@
     "category1": "Home Décor",
     "category2": "Decorative Bottles",
     "brand": "Litton",
-    "image1": "clear-litton-lane-decorative-bottles-94960-64_1000",
-    "image2": "clear-litton-lane-decorative-bottles-94960-c3_145",
-    "image3": "clear-litton-lane-decorative-bottles-94960-4f_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/clear-litton-lane-decorative-bottles-94960-64_1000.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/clear-litton-lane-decorative-bottles-94960-c3_145.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/clear-litton-lane-decorative-bottles-94960-4f_145.jpg"
   },
   {
     "productName": "Stonebriar Collection",
     "shortDescription": "11 in. x 6 in. Clear Glass Fluted Canister",
     "longDescription": "<p>Clear glass canister that fits in all kitchens and any decor. Food safe for any use that you may need. Hand crafted glass made from the finest material and a hand crafted lid lend a rich finish to any setting. <ul> <li>Mix and match with other items in the collection</li> <li>Made of glass</li> <li>Comes in 3 sizes</li> <li>Classic style</li> <li>Rustic decor</li> <li>Multifunctional</li> </ul> </p>",
-    "skuId": 206997095,
+    "skuId": "206997095",
     "stockQuantity": 1000,
     "price": 30,
     "currencyCode": "USD",
@@ -527,15 +527,15 @@
     "category1": "Home Décor",
     "category2": "Decorative Bottles",
     "brand": "Litton",
-    "image1": "clear-stonebriar-collection-decorative-bottles-sb-4614a-64_1000",
-    "image2": "clear-stonebriar-collection-decorative-bottles-sb-4614a-76_145",
-    "image3": "clear-stonebriar-collection-decorative-bottles-sb-4614a-c3_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/clear-stonebriar-collection-decorative-bottles-sb-4614a-64_1000.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/clear-stonebriar-collection-decorative-bottles-sb-4614a-76_145.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/clear-stonebriar-collection-decorative-bottles-sb-4614a-c3_145.jpg"
   },
   {
     "productName": "Apothecary Litton Lane",
     "shortDescription": "15 in. W x 9 in. H Clear Glass Apothecary-Style Jar Set with 2-Tiered Black Iron Wire Rack (11-Piece)",
     "longDescription": "<p>This set of decorative glass jars and rack features 10 clear glass apothecary-style jars with wide mouths on a sturdy 2-tiered iron wire rack, a simple design that blends well with most interior design themes. This set's smooth glass and textured black iron finishes add a beautifully contrasting feature. This jar and rack set brings a farmhouse-inspired touch to homes and spaces.</p>",
-    "skuId": 302593979,
+    "skuId": "302593979",
     "stockQuantity": 1000,
     "price": 39,
     "currencyCode": "USD",
@@ -546,15 +546,15 @@
     "category1": "Home Décor",
     "category2": "Decorative Bottles",
     "brand": "Litton",
-    "image1": "black-litton-lane-decorative-bottles-87801-64_1000",
-    "image2": "black-litton-lane-decorative-bottles-87801-4f_300",
-    "image3": "black-litton-lane-decorative-bottles-87801-c3_145"
+    "image1": "https://storage.googleapis.com/gcpimage/images/homedecor/black-litton-lane-decorative-bottles-87801-64_1000.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/homedecor/black-litton-lane-decorative-bottles-87801-4f_300.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/homedecor/black-litton-lane-decorative-bottles-87801-c3_145.jpg"
   },
   {
     "productName": "Skoolzy Lacing Beads for Kids Toddler Toy",
     "shortDescription": "Skoolzy Lacing Beads for Kids Toddler Toy - JUMBO Primary Lacing Toys For Toddlers - Autism Fine Motor Skills Montessori Toys - 36 String Beads, 4 Strings, Travel Bag, Preschool Activities eBook Set",
     "longDescription": "",
-    "skuId": 304274300,
+    "skuId": "304274300",
     "stockQuantity": 100,
     "price": 15,
     "currencyCode": "USD",
@@ -565,15 +565,15 @@
     "category1": "Toys",
     "category2": "Shapes & Colors",
     "brand": "",
-    "image1": "91SgkMXP9hL._SL1500_",
-    "image2": "71DP5Tc8IYL._SL1500_",
-    "image3": "81KWbsQyvzL._SL1500_"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/91SgkMXP9hL._SL1500_.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/71DP5Tc8IYL._SL1500_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/81KWbsQyvzL._SL1500_.jpg"
   },
   {
     "productName": "Large plastic button lacing Toy",
-    "shortDescription": "Large plastic button lacing Toy - Toddler Lacing, First Lacing, OT, Jumbo Large Beads, Montessori Kids",
+    "shortDescription": " Large plastic button lacing Toy - Toddler Lacing, First Lacing, OT, Jumbo Large Beads, Montessori Kids",
     "longDescription": "<p>This abstract piece of artwork will look incredibly beautiful in your home. Fabulous wavy designs fill the canvas. Colors of grey and blue and gold gorgeously mix and melt together harmoniously to create a lovely piece of decor. Take this painting home today to enjoy in your home or office space. <ul> <li>What is included: 1 lace and 18 large plastic colorful buttons in a random assortment of colors and shapes. The buttons are large, 1 1/2\" - 1 3/4\".</li>     <li>Children can simply lace the large variety of buttons on the lace, or they can sort or lace by color or button shape.</li> <li>While they play they are strengthening their fine motor muscles while picking up and manipulating the buttons.</li> </ul> </p>",
-    "skuId": 304274301,
+    "skuId": "304274301",
     "stockQuantity": 100,
     "price": 11,
     "currencyCode": "USD",
@@ -584,15 +584,15 @@
     "category1": "Toys",
     "category2": "Shapes & Colors",
     "brand": "",
-    "image1": "51Grbz0vxRL",
-    "image2": "81Y1vsWlJsL._SL1500_",
-    "image3": "71BFLv+W-4L._SL1500_"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/51Grbz0vxRL.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/81Y1vsWlJsL._SL1500_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/71BFLv+W-4L._SL1500_.jpg"
   },
   {
     "productName": "Learning Resources Beads in a Bucket Set of 108",
     "shortDescription": "",
     "longDescription": "<p>Versatile hardwood beads will have your children counting, sorting, learning colors, practicing patterning, and developing their fine motor skills! Set features 108 beads in six colors, plus two 36\" black laces with 1\" plastic tips for easy threading. All the beads store neatly in storage bucket when playtime is over.</p>",
-    "skuId": 304274302,
+    "skuId": "304274302",
     "stockQuantity": 100,
     "price": 24,
     "currencyCode": "USD",
@@ -603,15 +603,15 @@
     "category1": "Toys",
     "category2": "Shapes & Colors",
     "brand": "",
-    "image1": "81c-emiEsAL._SL1500_",
-    "image2": "91db5m5sLcL._SL1500_",
-    "image3": "41XdqTznypL"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/81c-emiEsAL._SL1500_.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/91db5m5sLcL._SL1500_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/41XdqTznypL.jpg"
   },
   {
     "productName": "SNAPTAIN S5C WiFi FPV Drone",
-    "shortDescription": "SNAPTAIN S5C WiFi FPV Drone with 720P HD Camera,Voice Control, Wide-Angle Live Video RC Quadcopter with Altitude Hold, Gravity Sensor Function, RTF One Key",
+    "shortDescription": " SNAPTAIN S5C WiFi FPV Drone with 720P HD Camera,Voice Control, Wide-Angle Live Video RC Quadcopter with Altitude Hold, Gravity Sensor Function, RTF One Key",
     "longDescription": "<p>SNAPTAIN S5C drone is user-friendly. Simply press one button, it will take off, land or return to your command. Smart voice control, headless mode, and the fascinating 360° Flips & Rolls come handy even for the drone newbies.</p>",
-    "skuId": 304274303,
+    "skuId": "304274303",
     "stockQuantity": 100,
     "price": 74.99,
     "currencyCode": "USD",
@@ -622,15 +622,15 @@
     "category1": "Toys",
     "category2": "Kid's Electronics",
     "brand": "Snaptain",
-    "image1": "71B-0V7CutL._SX679_",
-    "image2": "61SchqgattL._SL1000_",
-    "image3": "61DkoBze50L._SL1000_"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/71B-0V7CutL._SX679_.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/61SchqgattL._SL1000_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/61DkoBze50L._SL1000_.jpg"
   },
   {
     "productName": "Mini Drones for Kids",
     "shortDescription": "Mini Drones for Kids, EACHINE E010 2.4GHz 6-Axis Gyro Remote Control Best Quadcopter Nano Drone for Adults Beginners - Headless Mode, 3D Flip, One Key Return (Red)",
     "longDescription": "<p> <ul> <li>Red represents enthusiasm and joy, let it be a surprise for kids in the festival.</li> <li>With built-in positioning system,just press the one key return button, the drone will fly back to the remote control's location.</li> <li>The drone can perform 3D rollover performance, free to switch between high and low speed modes, have more fun.</li> <li>The drone will change its flight direction with the change of the direction of remote control.</li>> </ul> </p>",
-    "skuId": 304274304,
+    "skuId": "304274304",
     "stockQuantity": 100,
     "price": 23.95,
     "currencyCode": "USD",
@@ -641,15 +641,15 @@
     "category1": "Toys",
     "category2": "Kid's Electronics",
     "brand": "",
-    "image1": "61pWheSnxpL._SL1200_",
-    "image2": "61psRvxDjrL._SL1200_",
-    "image3": "815jqg5UZaL._SL1200_"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/61pWheSnxpL._SL1200_.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/61psRvxDjrL._SL1200_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/815jqg5UZaL._SL1200_.jpg"
   },
   {
     "productName": "Wonder Workshop Xylophone for Dash Robot",
     "shortDescription": "Wonder Workshop Xylophone for Dash Robot",
     "longDescription": "<p>Turn Dash into a one-robot light show and marching band with the xylophone. Your child can compose songs or remix a sample song from our library while learning concepts like loops and sequencing. Download the free Xylo app to make the most out of your xylophone accessory.Use with Wonder Workshop Dash Robot, sold separately</p>",
-    "skuId": 304274305,
+    "skuId": "304274305",
     "stockQuantity": 100,
     "price": 39.6,
     "currencyCode": "USD",
@@ -660,15 +660,15 @@
     "category1": "Toys",
     "category2": "Kid's Electronics",
     "brand": "Wonder world",
-    "image1": "41EKOyFzQ4L",
-    "image2": "81C29FMzkcL._SL1500_",
-    "image3": "71mjKkabQpL._SL1480_"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/41EKOyFzQ4L.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/81C29FMzkcL._SL1500_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/71mjKkabQpL._SL1480_.jpg"
   },
   {
     "productName": "Distianert RC Truck",
     "shortDescription": "Distianert RC Truck 1/18 Scale Flexible 4WD RC Car for Kids & Adults, 2.4Ghz Radio Controlled Off-Road Electronic Monster Truck R/C RTR Hobby Grade 45km/H High Speed(with an Extra Shell)",
     "longDescription": "<p>Most exciting family car race ever releasing your stress and putting yourself in breathless car race with your family members, It allows you to enjoy sweet family time and create delightful moments.As fast as the wind with newest steering system and powerful 390 motor, The buggy makes you experience a crazy speed up to 45km/H.Eco-friendly big rubber tires for both on- and off-road racing, the premium rugged rubber tires are great for absorbing shocks, minimizing slipperiness and scratches.Shockproof independent suspension 4-wheel independent suspension design absorbs bumps, ensures complete shock resistance for the car and improves road-holding capabilities at high speed. </p>",
-    "skuId": 304274306,
+    "skuId": "304274306",
     "stockQuantity": 100,
     "price": 88.99,
     "currencyCode": "USD",
@@ -679,15 +679,15 @@
     "category1": "Toys",
     "category2": "Kid's Electronics",
     "brand": "",
-    "image1": "71QUMDrYKoL._SL1000_",
-    "image2": "71+xuWI0i9L._SL1000_",
-    "image3": "71wJyKMwrXL._SL1000_"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/71QUMDrYKoL._SL1000_.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/71+xuWI0i9L._SL1000_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/71wJyKMwrXL._SL1000_.jpg"
   },
   {
     "productName": "Wilson NCAA MVP Rubber Basketball",
-    "shortDescription": "Wilson NCAA MVP Rubber Basketball, Intermediate - 28.5",
+    "shortDescription": " Wilson NCAA MVP Rubber Basketball, Intermediate - 28.5\"",
     "longDescription": "",
-    "skuId": 304274307,
+    "skuId": "304274307",
     "stockQuantity": 100,
     "price": 11.99,
     "currencyCode": "USD",
@@ -698,7 +698,7 @@
     "category1": "Toys",
     "category2": "Sports & Outdoor Play",
     "brand": "Wilson",
-    "image1": "911c0QWW3uL._SL1500_",
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/911c0QWW3uL._SL1500_.jpg",
     "image2": "",
     "image3": ""
   },
@@ -706,7 +706,7 @@
     "productName": "Toddler Swing",
     "shortDescription": "Sportspower My First Toddler Swing",
     "longDescription": "<p>Toddlers can enjoy their own personal swing set with the Sportspower My First Toddler Swing! Great for indoor and outdoor play, young children can swing to their heart's content in the secure nursery seat complete with safety harness that ensures they're seated snugly. Parents can feel secure knowing the frame is constructed from sturdy powder-coated steel that delivers superior toughness and durability, and even folds down for easy storage and transport. All Sportspower play sets meet or exceed ASTM safety standards, so you can enjoy the swing set with peace of mind. The Sportspower My First Toddler Swing is ideal for large rooms and any size yard and supports toddlers up to 55 pounds. Recommended for toddlers 9 to 36 months old. Measures 52\"L x 55\"W x 47\"H when assembled.</p>",
-    "skuId": 304274308,
+    "skuId": "304274308",
     "stockQuantity": 100,
     "price": 36.24,
     "currencyCode": "USD",
@@ -717,15 +717,15 @@
     "category1": "Toys",
     "category2": "Sports & Outdoor Play",
     "brand": "",
-    "image1": "81UwBCXtLXL._SL1500_",
-    "image2": "91eDuu6n-TL._SL1500_",
-    "image3": "81Z1MLpYYIL._SL1500_"
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/81UwBCXtLXL._SL1500_.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/91eDuu6n-TL._SL1500_.jpg",
+    "image3": "https://storage.googleapis.com/gcpimage/images/toys/81Z1MLpYYIL._SL1500_.jpg"
   },
   {
     "productName": "Daniel Tiger Mini Plush",
     "shortDescription": "Daniel Tiger's Neighborhood Daniel Tiger Mini Plush",
     "longDescription": "<p>How do you teach life's little lessons with big fun? By giving your little one a Daniel Tiger mini plush, an adorable seven Inch of fuzzy, snuggly tiger-riffic cuddles. This sweet little stuffed tiger is based on the PBS show Daniel Tiger's Neighborhood, inspired by the classic Mister Rogers neighborhood.</p>",
-    "skuId": 304274320,
+    "skuId": "304274320",
     "stockQuantity": 100,
     "price": 10,
     "currencyCode": "USD",
@@ -736,8 +736,8 @@
     "category1": "Toys",
     "category2": "Stuffed Animals & Plush Toys",
     "brand": "PB Kids",
-    "image1": "615FzphxwKL._SL1200_",
-    "image2": "71YnpOxtUuL._SL1500_",
+    "image1": "https://storage.googleapis.com/gcpimage/images/toys/615FzphxwKL._SL1200_.jpg",
+    "image2": "https://storage.googleapis.com/gcpimage/images/toys/71YnpOxtUuL._SL1500_.jpg",
     "image3": ""
   }
 ]

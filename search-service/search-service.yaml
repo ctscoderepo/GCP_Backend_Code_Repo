@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: searchservice
+  labels:
+    app: ss
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ss
+  template:
+    metadata:
+      labels:
+        app: ss
+    spec:
+      containers:
+        - name: spring-backend
+          image: gcr.io/next-2019/ecomm/search-service:v1
+          env:
+            - name: ENV_NAME
+              value: stage
+            - name: ENV_VERSION_NAME
+              value: v1
+          ports:
+            - containerPort: 80

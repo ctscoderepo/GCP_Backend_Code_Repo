@@ -9,6 +9,12 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
+
+plugins {
+	id 'org.sonarqube' version '2.6'
+	id 'jacoco'
+}
+
 apply plugin: 'maven'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
@@ -24,6 +30,27 @@ mainClassName='com.gcp.demo.App'
 
 repositories {
 	mavenCentral()
+}
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		csv.enabled false
+		html.destination file("${buildDir}/coverage-reports")
+	}
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectName", "search-service"
+		property "sonar.projectKey", "gcp-search-service"
+	}
+}
+
+test {
+	jacoco {
+		destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+		classDumpDir = file("$buildDir/jacoco/classpathdumps")
+	}
 }
 
 dependencies {

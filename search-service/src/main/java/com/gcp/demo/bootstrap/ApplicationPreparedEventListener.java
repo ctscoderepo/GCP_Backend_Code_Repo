@@ -11,7 +11,6 @@ import org.elasticsearch.ResourceAlreadyExistsException;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
@@ -121,11 +120,11 @@ public class ApplicationPreparedEventListener implements ApplicationListener<App
         private String image5;
 
         public String getId() {
-            return skuId;
+            return getSkuId();
         }
 
         public void setId(String id) {
-            this.skuId = id;
+            setSkuId(id);
         }
     }
 }

@@ -1,0 +1,31 @@
+node {
+
+     try {
+         stage('checkout') {
+             checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/ctscoderepo/GCP_Backend_Code_Repo.git']]])
+         }
+         stage ('build & coverage') {
+            sh "chmod -R 755 ."
+            sh "cd ./search-service"
+            withSonarQubeEnv('SonarQube Server') {
+                sh "./gradlew clean build jacocoTestReport sonarqube"
+            }
+         }
+
+         stage ('GCP activities') {
+            sh "docker build -t gcr.io/next-2019/search-service:${JOB_NAME}-${BUILD_NUMBER} ."
+            sh "gsutil cp gs://g-next/creds.json ."
+            sh "gcloud auth activate-service-account --key-file=creds.json"
+            sh "gcloud docker -- push gcr.io/next-2019/search-service:${JOB_NAME}-${BUILD_NUMBER}"
+         }
+     } catch (e) {
+         println e;
+     } finally {
+        publishHTML([allowMissing         : true,
+                      alwaysLinkToLastBuild: true,
+                      keepAll              : true,
+                      reportDir            : 'build/coverage-reports',
+                      reportFiles          : 'index.html',
+                      reportName           : 'Coverage report'])
+     }
+ }

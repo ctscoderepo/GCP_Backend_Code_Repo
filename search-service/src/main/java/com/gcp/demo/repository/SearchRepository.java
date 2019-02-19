@@ -7,6 +7,7 @@ import com.gcp.demo.model.FilterOptions;
 import com.gcp.demo.model.Product;
 import com.gcp.demo.model.SearchResult;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -81,13 +82,14 @@ public class SearchRepository {
     private QueryBuilder prepareBaseQuery(final String keyword, final Optional<FilterOptions> filterOptions) {
         MultiMatchQueryBuilder queryBuilder = multiMatchQuery(keyword)
                 .field("skuId.keyword")
-                .field("productName")
                 .field("brand")
-                .field("shortDescription")
                 .field("category1")
                 .field("category2")
-                .type(MultiMatchQueryBuilder.Type.BEST_FIELDS);
-        if (filterOptions != null && filterOptions.isPresent()) {
+                .field("productName")
+                .field("shortDescription")
+                .type(MultiMatchQueryBuilder.Type.BEST_FIELDS)
+                .fuzziness(Fuzziness.AUTO);
+        if (filterOptions.isPresent()) {
             return boolQuery().must(queryBuilder).must(
                     getFilterQuery(filterOptions.get())
             );
@@ -145,7 +147,7 @@ public class SearchRepository {
         if (!StringUtils.isEmpty(cat2)) {
             return qb.must(termQuery("category2", cat2));
         }
-        if (filterOptions != null && filterOptions.isPresent()) {
+        if (filterOptions.isPresent()) {
             return boolQuery().must(qb).must(
                     getFilterQuery(filterOptions.get())
             );
