@@ -15,12 +15,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/keywordsearch?keyword=Apparel",
+					"raw": "http://104.154.92.99:80/keywordsearch?keyword=Apparel",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"104",
+						"154",
+						"92",
+						"99"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"keywordsearch"
 					],
@@ -44,12 +47,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/keywordsearch?keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceLow%22%3A20%7D",
+					"raw": "http://104.154.92.99/keywordsearch?keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceLow%22%3A20%7D",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"104",
+						"154",
+						"92",
+						"99"
 					],
-					"port": "8080",
 					"path": [
 						"keywordsearch"
 					],
@@ -82,12 +87,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/keywordsearch?keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D",
+					"raw": "http://104.154.92.99/keywordsearch?keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"104",
+						"154",
+						"92",
+						"99"
 					],
-					"port": "8080",
 					"path": [
 						"keywordsearch"
 					],
@@ -120,12 +127,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/search?category1=Apparel&category2=Clothing",
+					"raw": "http://104.154.92.99/search?category1=Apparel&category2=Clothing",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"104",
+						"154",
+						"92",
+						"99"
 					],
-					"port": "8080",
 					"path": [
 						"search"
 					],
@@ -153,12 +162,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/LV_511_JN",
+					"raw": "http://104.154.92.99/products/LV_511_JN",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"104",
+						"154",
+						"92",
+						"99"
 					],
-					"port": "8080",
 					"path": [
 						"products",
 						"LV_511_JN"
@@ -177,12 +188,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/search?category1=Apparel&category2=Clothing&keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D",
+					"raw": "http://104.154.92.99/search?category1=Apparel&category2=Clothing&keyword=Apparel&filterOptions=%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"104",
+						"154",
+						"92",
+						"99"
 					],
-					"port": "8080",
 					"path": [
 						"search"
 					],
@@ -202,6 +215,41 @@
 						{
 							"key": "filterOptions",
 							"value": "%7B%22brands%22%3A%5B%22Nike%22%2C%22Adidas%22%5D%2C%20%22priceHigh%22%3A15%7D"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keyword (Apparel, Sort Name Asc)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://104.154.92.99/keywordsearch?keyword=Apparel&sortBy=NAME_DESC",
+					"protocol": "http",
+					"host": [
+						"104",
+						"154",
+						"92",
+						"99"
+					],
+					"path": [
+						"keywordsearch"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "Apparel"
+						},
+						{
+							"key": "sortBy",
+							"value": "NAME_DESC"
 						}
 					]
 				}
