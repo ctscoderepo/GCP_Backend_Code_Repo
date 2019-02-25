@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -55,6 +56,13 @@ public class UserloginController {
         Response response = userService.findUserByLogonIdAndPassword(userDetail);		
 		logger.debug("User response:", response);
 		logger.info("End registerUser method:", UserloginController.class.getName());
-		return new ResponseEntity<Response>(response, HttpStatus.OK);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Access-Control-Allow-Origin", "*");
+		responseHeaders.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+		responseHeaders.add("Access-Control-Allow-Headers", "Content-Type");
+		responseHeaders.add("Access-Control-Max-Age", "3600");
+		ResponseEntity<Response> resp = new ResponseEntity<Response>(response, responseHeaders, HttpStatus.OK);
+		return resp;
 	}	
 }

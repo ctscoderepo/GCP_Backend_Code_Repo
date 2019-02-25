@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -61,8 +62,13 @@ public class UserController {
 			response.setMessage("User registration not couldn't be done successfully.");
 			response.setUserDetails(null);
 		}
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Access-Control-Allow-Origin", "*");
+		responseHeaders.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+		responseHeaders.add("Access-Control-Allow-Headers", "Content-Type");
+		responseHeaders.add("Access-Control-Max-Age", "3600");
 		logger.debug("User response:", registeredUser.toString());
 		logger.info("End registerUser method:", UserController.class.getName());
-		return new ResponseEntity<Response>(response, HttpStatus.CREATED);		
+		return new ResponseEntity<Response>(response, responseHeaders, HttpStatus.CREATED);		
 	}
 }
