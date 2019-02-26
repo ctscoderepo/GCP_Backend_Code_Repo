@@ -1,18 +1,13 @@
 package com.gcp.demo.bootstrap;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gcp.demo.model.Product;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.ResourceAlreadyExistsException;
-import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
-import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -30,14 +25,18 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class ApplicationPreparedEventListener implements ApplicationListener<ApplicationReadyEvent> {
+    private static final String CATEGORY_INDEX = "category_index";
+    private static final String PRODUCT_CATALOG = "product_catalog";
     @Autowired
     private ElasticsearchTemplate esClient;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
-        String indexName = "product_catalog";
-        createIndex("settings.json", "product_elasticsearch_mapping.json", indexName);
-        indexData("data.json", indexName);
+        createIndex("product_index_settings.json", "product_elasticsearch_mapping.json", PRODUCT_CATALOG);
+        indexData("product_data.json", PRODUCT_CATALOG, ProductDoc.class);
+
+        createIndex("category_index_settings.json", "category_elasticsearch_mapping.json", CATEGORY_INDEX);
+        indexData("category_data.json", CATEGORY_INDEX, Category.class);
     }
 
     private void createIndex(String settingsFile, String mappingFile, String indexName) {
@@ -61,13 +60,12 @@ public class ApplicationPreparedEventListener implements ApplicationListener<App
         }
     }
 
-    private void indexData(String dataFile, String indexName) {
+    private void indexData(String dataFile, String indexName, Class dataType) {
         try {
             String data = readResourceToStringUsingStreams(new ClassPathResource(dataFile));
             ObjectMapper mapper = new ObjectMapper();
-            List<ProductDoc> docs = mapper.readValue(data, new TypeReference<List<ProductDoc>>() {
-            });
-            docs.stream().forEach(doc -> {
+            List<Indexable> docs = mapper.readValue(data, mapper.getTypeFactory().constructCollectionType(List.class, dataType));
+            docs.forEach(doc -> {
                         try {
                             String source = mapper.writeValueAsString(doc);
                             IndexQuery query = new IndexQuery();
@@ -93,10 +91,14 @@ public class ApplicationPreparedEventListener implements ApplicationListener<App
         return new BufferedReader(new InputStreamReader(inputStream)).lines().collect(Collectors.joining("\n"));
     }
 
+    private interface Indexable {
+        String getId();
+    }
+
     @ToString
     @Getter
     @Setter
-    private static class ProductDoc {
+    private static class ProductDoc implements Indexable {
         private String id;
         private String productName;
         private String shortDescription;
@@ -126,5 +128,15 @@ public class ApplicationPreparedEventListener implements ApplicationListener<App
         public void setId(String id) {
             setSkuId(id);
         }
+    }
+
+    @Getter
+    @Setter
+    @ToString
+    private static class Category implements Indexable {
+        private String id;
+        private String displayName;
+        private String url;
+        private List<String> children;
     }
 }
