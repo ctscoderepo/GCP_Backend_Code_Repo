@@ -1,0 +1,91 @@
+[
+  {
+    "id": "cat11",
+    "displayName": "Electronics",
+    "url": "/c/electronics-cat11",
+    "children": ["cat12","cat13","cat14"]
+  },
+  {
+    "id": "cat12",
+    "displayName": "Camera & photo",
+    "url": "/c/electronics-camera-photo-cat12"
+  },
+  {
+    "id": "cat13",
+    "displayName": "Others",
+    "url": "/c/electronics-others-cat13"
+  },
+  {
+    "id": "cat14",
+    "displayName": "Cell phones",
+    "url": "/c/electronics-cell-phones-cat14"
+  },
+  {
+    "id": "cat21",
+    "displayName": "Apparel",
+    "url": "/c/apparel-cat21",
+    "children": ["cat22","cat23","cat24"]
+  },
+  {
+    "id": "cat22",
+    "displayName": "Shoes",
+    "url": "/c/apparel-shoes-cat22"
+  },
+  {
+    "id": "cat23",
+    "displayName": "Clothing",
+    "url": "/c/apparel-clothing-cat23"
+  },
+  {
+    "id": "cat24",
+    "displayName": "Accessories",
+    "url": "/c/apparel-accessories-cat24"
+  },
+  {
+    "id": "cat31",
+    "displayName": "Home Décor",
+    "url": "/c/home-decor-cat31",
+    "children": ["cat32","cat33","cat34"]
+  },
+  {
+    "id": "cat32",
+    "displayName": "Art Prints",
+    "url": "/c/home-decor-art-prints-cat32"
+  },
+  {
+    "id": "cat33",
+    "displayName": "Lighting",
+    "url": "/c/home-decor-lighting-cat33"
+  },
+  {
+    "id": "cat34",
+    "displayName": "Decorative Bottles",
+    "url": "/c/home-decor-decorative-bottles-cat34"
+  },
+  {
+    "id": "cat41",
+    "displayName": "Toys",
+    "url": "/c/toys-cat13",
+    "children": ["cat42","cat43","cat44","cat45"]
+  },
+  {
+    "id": "cat42",
+    "displayName": "Shapes & Colors",
+    "url": "/c/toys-shapes-colors-cat42"
+  },
+  {
+    "id": "cat43",
+    "displayName": "Kids' Electronics",
+    "url": "/c/toys-kids-electronics-cat43"
+  },
+  {
+    "id": "cat44",
+    "displayName": "Sports & Outdoor Play",
+    "url": "/c/toys-sports-outdoor-play-cat44"
+  },
+  {
+    "id": "cat45",
+    "displayName": "Stuffed Animals & Plush Toys",
+    "url": "/c/toys-stuffed-animals-plush-toys-cat45"
+  }
+]

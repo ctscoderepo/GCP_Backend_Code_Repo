@@ -2,10 +2,7 @@ package com.gcp.demo.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gcp.demo.Constants;
-import com.gcp.demo.model.Facet;
-import com.gcp.demo.model.FilterOptions;
-import com.gcp.demo.model.Product;
-import com.gcp.demo.model.SearchResult;
+import com.gcp.demo.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -23,7 +20,9 @@ import org.elasticsearch.search.sort.SortBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.GetQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
@@ -41,6 +40,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class SearchRepository {
 
     private ObjectMapper objectMapper = new ObjectMapper();
+    private static int MAX_FETCH_SIZE = 25;
 
     @Autowired
     private ElasticsearchTemplate searchTemplate;
@@ -224,5 +224,55 @@ public class SearchRepository {
         GetQuery query = new GetQuery();
         query.setId(productId);
         return searchTemplate.queryForObject(query, Product.class);
+    }
+
+    public List<CategoryDocument> getAllCategories() {
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(QueryBuilders.matchAllQuery())
+                .withPageable(PageRequest.of(0, MAX_FETCH_SIZE))
+                .build();
+        Page<CategoryDocument> categoryResult = searchTemplate.queryForPage(searchQuery, CategoryDocument.class);
+
+        return categoryResult.getContent();
+    }
+
+    public List<CategoryDocument> getCategoryAndChildCategories(String categoryId) {
+        GetQuery categoryQuery = new GetQuery();
+        categoryQuery.setId(categoryId);
+        CategoryDocument mainCategoryDocument = searchTemplate.queryForObject(categoryQuery, CategoryDocument.class);
+        List<CategoryDocument> categories = new ArrayList<>();
+        if (mainCategoryDocument != null) {
+            categories.add(mainCategoryDocument);
+            List<String> childCategories = mainCategoryDocument.getChildren();
+            if (!CollectionUtils.isEmpty(childCategories)) {
+                SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                        .withQuery(QueryBuilders.idsQuery().addIds(childCategories.toArray(new String[0])))
+                        .withPageable(PageRequest.of(0, MAX_FETCH_SIZE))
+                        .build();
+                Page<CategoryDocument> categoryResult = searchTemplate.queryForPage(searchQuery, CategoryDocument.class);
+                categories.addAll(categoryResult.getContent());
+            }
+        }
+        return categories;
+    }
+
+    public List<CategoryDocument> getCategoryAndParentCategory(String categoryId) {
+        List<CategoryDocument> categories = new ArrayList<>();
+        GetQuery categoryQuery = new GetQuery();
+        categoryQuery.setId(categoryId);
+        CategoryDocument mainCategoryDocument = searchTemplate.queryForObject(categoryQuery, CategoryDocument.class);
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(QueryBuilders.termQuery("children", categoryId))
+                .withPageable(PageRequest.of(0, 1))
+                .build();
+        Page<CategoryDocument> categoryResult = searchTemplate.queryForPage(searchQuery, CategoryDocument.class);
+        List<CategoryDocument> parents = categoryResult.getContent();
+        if (!CollectionUtils.isEmpty(parents)) {
+            categories.add(parents.get(0));
+        }
+        if (mainCategoryDocument != null) {
+            categories.add(mainCategoryDocument);
+        }
+        return  categories;
     }
 }

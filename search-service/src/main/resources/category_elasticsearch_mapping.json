@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "id": {
+      "type": "text",
+      "index": false,
+      "doc_values": false,
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "displayName": {
+      "type": "text",
+      "doc_values": false,
+      "index": false
+    },
+    "url": {
+      "type": "text",
+      "index": false,
+      "doc_values": false
+    },
+    "children": {
+      "type": "keyword"
+    }
+  }
+}
