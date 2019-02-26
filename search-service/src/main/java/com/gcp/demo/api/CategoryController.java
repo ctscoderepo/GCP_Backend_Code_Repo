@@ -30,11 +30,11 @@ public class CategoryController {
         return service.getCategories(categoryId);
     }
 
-    @GetMapping({"/categories/{categoryId}/search", "/categories/{categoryId}/subcategories/{subCategoryId}/search"})
+    @GetMapping({"/categories/{categoryId}/search"})
     @SneakyThrows
-    public SearchResult getCategoryResults(@PathVariable String categoryId, @PathVariable(required = false) String subCategoryId,
-                                            @RequestParam(required = false) String filterOptions, String sortBy) {
-        return service.getCategoryResults(categoryId, subCategoryId, getFilterOptions(Optional.ofNullable(filterOptions)), Constants.toSortBy(sortBy));
+    public SearchResult getCategoryResults(@PathVariable String categoryId,
+                                           @RequestParam(required = false) String filterOptions, String sortBy) {
+        return service.getCategoryResults(categoryId, getFilterOptions(Optional.ofNullable(filterOptions)), Constants.toSortBy(sortBy));
     }
 
     @SneakyThrows

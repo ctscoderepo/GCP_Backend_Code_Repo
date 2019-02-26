@@ -44,7 +44,7 @@ public class SearchService {
 
     }
 
-    public SearchResult getCategoryResults(String categoryId, String subCategoryId, final Optional<FilterOptions> filterOptions, final Constants.SortBy sortBy) throws InvalidInputException {
+    public SearchResult getCategoryResults(String categoryId, final Optional<FilterOptions> filterOptions, final Constants.SortBy sortBy) throws InvalidInputException {
         if (!StringUtils.isEmpty(categoryId)) {
             List<CategoryDocument> categories =  repository.getCategoryAndParentCategory(categoryId);
             if (!CollectionUtils.isEmpty(categories)) {
