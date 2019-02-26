@@ -26,7 +26,7 @@ import com.gcp.registration.service.UserService;
 
 @RestController
 @RequestMapping("/api/login-service")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserloginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserloginController.class);
