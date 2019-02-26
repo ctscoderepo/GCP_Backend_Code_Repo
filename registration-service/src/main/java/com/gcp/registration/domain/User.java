@@ -38,7 +38,7 @@ public class User {
 	private String logonId;
 
 	@NotBlank(message = "Password is required")
-	@Size(min = 8, max = 12, message = "Please use 8 to 12 characters")
+	@Size(min = 8, max = 50, message = "Please use 8 to 50 characters")
 	private String password;
 
 	@JsonFormat(pattern = "yyyy-mm-dd")

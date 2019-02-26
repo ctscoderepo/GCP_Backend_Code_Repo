@@ -1,8 +1,10 @@
 package com.gcp.cart.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.gcp.cart.controller.CartController;
@@ -143,4 +145,69 @@ public class CartServiceUtil {
 		return orderItem;
 	}
 
+	/**
+	 * This method is validate the order request
+	 * 
+	 * @param OrderRequest
+	 * @param endPoint
+	 * @return Map<String, String>
+	 */
+	public static Map<String, String> validateRequest(OrderRequest orderRequest, String endPoint){
+		Map<String, String> errorMap = new HashMap<String,String>();
+		if(endPoint.equals("add")){
+			if(null==orderRequest.getProductId() || orderRequest.getProductId().isEmpty()){
+				errorMap.put("productId", "ProductId is required.");
+			}
+			if(orderRequest.getPrice()==0){
+				errorMap.put("price", "Price is required.");
+			}
+			if(orderRequest.getQuantity()==0){
+				errorMap.put("quantity", "Quantity is required.");
+			}
+		}
+		if(endPoint.equals("update")){
+			if(orderRequest.getOrderItemsId()==0){
+				errorMap.put("orderItemId", "orderItemId is required.");
+			}
+			if(orderRequest.getQuantity()==0){
+				errorMap.put("quantity", "Quantity is required.");
+			}
+		}
+		if(endPoint.equals("checkout")){
+			if(orderRequest.getOrderId()==0){
+				errorMap.put("orderId", "orderId is required.");
+			}
+			if(orderRequest.getMemberId()==0){
+				errorMap.put("memberId", "memberId is required.");
+			}
+			if(orderRequest.getAddressId()==0){
+				errorMap.put("addressId", "addressId is required.");
+			}
+		}
+		
+		return errorMap;
+	}
+	
+	
+	/**
+	 * This method is validate the request param
+	 * 
+	 * @param requestParam
+	 * @param endPoint
+	 * @return Map<String, String>
+	 */
+	public static Map<String, String> validateRequestParam(String requestParam, String endPoint){
+		Map<String, String> errorMap = new HashMap<String,String>();
+		if(endPoint.equals("delete")){
+			if(requestParam.isEmpty()){
+				errorMap.put("orderItemId", "OrderItemId is required.");
+			}			
+		}	
+		if(endPoint.equals("byMemberId")){
+			if(requestParam.isEmpty()){
+				errorMap.put("memberId", "MemberId is required.");
+			}			
+		}	
+		return errorMap;
+	}
 }
