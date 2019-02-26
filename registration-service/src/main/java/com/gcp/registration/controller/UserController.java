@@ -25,7 +25,7 @@ import com.gcp.registration.service.UserService;
  */
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
+//@CrossOrigin
 @RequestMapping("/api/register-user/user")
 public class UserController {
 	
