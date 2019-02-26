@@ -26,7 +26,7 @@ public class CategoryController {
 
     @GetMapping({"/categories", "/categories/{categoryId}/subcategories"})
     @SneakyThrows
-    public List<Category> getCategories(@PathVariable String categoryId) {
+    public List<Category> getCategories(@PathVariable(required = false) String categoryId) {
         return service.getCategories(categoryId);
     }
 
