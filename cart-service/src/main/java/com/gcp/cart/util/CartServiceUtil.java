@@ -183,7 +183,7 @@ public class CartServiceUtil {
 			if(orderRequest.getAddressId()==0){
 				errorMap.put("addressId", "addressId is required.");
 			}
-		}
+		}  
 		
 		return errorMap;
 	}

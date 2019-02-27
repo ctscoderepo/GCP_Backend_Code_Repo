@@ -19,4 +19,4 @@ public class UserDetail {
 	@NotBlank(message = "Password is required")
 	@Size(min = 8, max = 50, message = "Please use 8 to 50 characters")
 	private String password;
-}
+}  

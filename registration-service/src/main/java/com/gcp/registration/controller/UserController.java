@@ -23,7 +23,7 @@ import com.gcp.registration.service.UserService;
  * This class is rest controller which publish end point.
  */
 
-@RestController
+@RestController  
 //@CrossOrigin
 @RequestMapping("/api/register-user/user")
 public class UserController {
