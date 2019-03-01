@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backendvision
+  labels:
+    app: vision
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vision
+  template:
+    metadata:
+      labels:
+        app: vision
+    spec:
+      containers:
+      - name: spring-backend
+        image: gcr.io/next-2019/ecomm/backendvision:v1
+        ports:
+        - containerPort: 80
