@@ -4,7 +4,7 @@ import com.gcp.vision.api.model.VisionApiResponse;
 import com.google.api.client.util.Value;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.Credentials;
-import com.google.auth.oauth2.ServiceAccountCredentials;
+import com.google.auth.oauth2.ComputeEngineCredentials;
 import com.google.cloud.vision.v1.AnnotateImageRequest;
 import com.google.cloud.vision.v1.AnnotateImageResponse;
 import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
@@ -15,9 +15,7 @@ import com.google.cloud.vision.v1.Image;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.cloud.vision.v1.ImageAnnotatorSettings;
 import com.google.protobuf.ByteString;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -96,22 +93,19 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 	}
 
 	public static ImageAnnotatorSettings setImageAnnotator() {
-		Credentials myCredentials = null;
+		Credentials credentials =null;
 		try {
-			InputStream inputStream = new ClassPathResource("static/NEXT-2019-8e0fa7e1ce0b.json").getInputStream();
-			myCredentials = ServiceAccountCredentials
-					.fromStream(inputStream);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("Inside setImageAnnotator");
+			credentials = ComputeEngineCredentials.create();	
+			System.out.println("credentials setImageAnnotator");
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		ImageAnnotatorSettings imageAnnotatorSettings = null;
 		try {
 			imageAnnotatorSettings = ImageAnnotatorSettings.newBuilder()
-					.setCredentialsProvider(FixedCredentialsProvider.create(myCredentials)).build();
+					.setCredentialsProvider(FixedCredentialsProvider.create(credentials)).build();
+			System.out.println("imageAnnotatorSettings******");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
