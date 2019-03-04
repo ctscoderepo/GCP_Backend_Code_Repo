@@ -10,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -31,8 +34,12 @@ public class OrderItems {
 	private String status;
 	private Date timePlaced;
 	private Date timeUpdate;
+	private String fullfillmentType;
+	private String productDesciption;
+	private String imageUrl;
 	@ManyToOne
 	@JoinColumn(unique = true)
+	@JsonIgnore
 	private Orders orders;
 	
 	@PrePersist
