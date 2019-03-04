@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ import com.gcp.registration.service.UserService;
  */
 
 @RestController  
-//@CrossOrigin
+@CrossOrigin
 @RequestMapping("/api/register-user/user")
 public class UserController {
 	
@@ -50,7 +51,7 @@ public class UserController {
 		Response response = new Response(); 
 	
 		//To validate the request
-		ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+		ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationErrorMessage(result);
         if(errorMap!=null) return errorMap;
         
 		User registeredUser = userService.registerUser(user);

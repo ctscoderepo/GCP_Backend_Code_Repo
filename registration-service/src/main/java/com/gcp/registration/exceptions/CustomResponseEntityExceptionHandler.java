@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.gcp.registration.domain.Response;
+
 /**
  * @author Anuj Kumar
  * 
@@ -24,9 +26,25 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 	 * @param webRequest
 	 * @return ResponseEntity<Object>
 	 */
-	@ExceptionHandler
+/*	@ExceptionHandler
 	public ResponseEntity<Object> handleLogonIdException(LogonIdException ex, WebRequest webRequest){
 		CustomUserExceptionResponse expResponse = new CustomUserExceptionResponse(ex.getMessage());
 		return new ResponseEntity<>(expResponse, HttpStatus.BAD_REQUEST);
+	}*/
+	
+	
+	/**
+	 * Function to check the logonId if already exists.
+	 * 
+	 * @param LogonIdException
+	 * @param webRequest
+	 * @return ResponseEntity<Object>
+	 */
+	@ExceptionHandler
+	public ResponseEntity<Response> handleLogonIdException(LogonIdException ex, WebRequest webRequest){
+		Response resp= new Response();
+		resp.setErrorMessage(ex.getMessage());
+		resp.setMessage("User resgistration failed.");
+		return new ResponseEntity<Response>(resp, HttpStatus.BAD_REQUEST);
 	}
 }
