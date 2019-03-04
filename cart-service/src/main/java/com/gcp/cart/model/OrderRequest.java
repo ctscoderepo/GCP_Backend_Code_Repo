@@ -16,4 +16,5 @@ public class OrderRequest {
 	private double price;
 	private long memberId;
 	private long addressId;
+	private String email;
 }

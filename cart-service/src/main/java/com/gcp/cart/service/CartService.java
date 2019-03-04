@@ -3,6 +3,7 @@ package com.gcp.cart.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.gcp.cart.model.OrderRequest;
+import com.gcp.cart.model.Product;
 import com.gcp.cart.model.Response;
 
 /**
@@ -54,4 +55,12 @@ public interface CartService {
 	 * @return Response
 	 */
 	Response cartCheckout(OrderRequest orderRequest);
+	
+	/**
+	 * This method is used for final checkout
+	 * 
+	 * @param skuId
+	 * @return Product
+	 */
+	Product getProductDetails(String skuId);
 }

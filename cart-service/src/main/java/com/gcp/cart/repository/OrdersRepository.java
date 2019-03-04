@@ -31,7 +31,7 @@ public interface OrdersRepository extends CrudRepository<Orders, Integer>{
 	 * @param Orders
 	 * @return List<OrderItems>
 	 */
-	@Query("from Orders o where o.memberId = :memberId")
+	@Query("from Orders o where o.memberId = :memberId and o.status != 'P'")
 	List<Orders> findOrderByMemberId(@Param("memberId") long memberId);
 	
 	/**

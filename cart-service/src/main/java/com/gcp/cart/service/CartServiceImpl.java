@@ -5,9 +5,14 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 import com.gcp.cart.domain.Orders;
 import com.gcp.cart.model.OrderRequest;
+import com.gcp.cart.model.Product;
 import com.gcp.cart.model.Response;
 import com.gcp.cart.controller.CartController;
 import com.gcp.cart.domain.OrderItems;
@@ -26,12 +31,17 @@ import com.gcp.cart.util.CartServiceUtil;
 public class CartServiceImpl implements CartService {
 
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
-	
+
 	@Autowired
 	protected OrdersRepository ordersRepository;
 
 	@Autowired
 	protected OrderItemsRepository orderItemsRepository;
+
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 
 	/**
 	 * This method is used to add items into cart
@@ -44,7 +54,7 @@ public class CartServiceImpl implements CartService {
 		logger.info("Start createOrder method: ", CartServiceImpl.class.getName());
 		Response resp = new Response();
 		Orders order = new Orders();
-		
+
 		// To check if order is already exists or not for guest user
 		if (orderRequest.getMemberId() == 0 && orderRequest.getOrderId() == 0) {
 			// create new order for guest user
@@ -66,28 +76,34 @@ public class CartServiceImpl implements CartService {
 				// To create new order for logined user
 				order = ordersRepository.save(CartServiceUtil.setOrderEntity(orderRequest));
 			}
-		}	
-
-	if(null!=order)
-	{
-		// create the order item entry
-		OrderItems orderItem = CartServiceUtil.setOrderItemEntity(orderRequest);
-		orderItem.setOrders(order);
-		orderItem.setMemberId(order.getMemberId());
-		orderItem = orderItemsRepository.save(orderItem);
-
-		// To re-calculate order & update the DB
-		List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
-		order = ordersRepository.save(CartServiceUtil.recalculateOrder(order, ordItemList));
-
-		// To prepare response with order & order items
-		if (order.getId() != 0) {
-			order = ordersRepository.findOrderByOrdersId(order.getId());
-			resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
 		}
-	}
-	logger.info("End createOrder method: ", CartServiceImpl.class.getName());
-	return resp;
+
+		if (null != order) {
+			// create the order item entry
+			OrderItems orderItem = CartServiceUtil.setOrderItemEntity(orderRequest);
+			orderItem.setOrders(order);
+			orderItem.setMemberId(order.getMemberId());
+			
+			// Find the product details
+			Product product=getProductDetails(orderRequest.getProductId());
+			if(null!=product){
+				orderItem.setProductDesciption(product.getShortDescription());
+				orderItem.setImageUrl(product.getImages().get(0));
+			}
+			orderItem = orderItemsRepository.save(orderItem);
+
+			// To re-calculate order & update the DB
+			List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
+			order = ordersRepository.save(CartServiceUtil.recalculateOrder(order, ordItemList));
+
+			// To prepare response with order & order items
+			if (order.getId() != 0) {
+				order = ordersRepository.findOrderByOrdersId(order.getId());
+				resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
+			}
+		}
+		logger.info("End createOrder method: ", CartServiceImpl.class.getName());
+		return resp;
 	}
 
 	/**
@@ -211,4 +227,25 @@ public class CartServiceImpl implements CartService {
 		logger.info("End cartCheckout method: ", CartServiceImpl.class.getName());
 		return resp;
 	}
+
+	/**
+	 * This method is used get the product details
+	 * 
+	 * @param skuId
+	 * @return Product
+	 */
+	@Override
+	public Product getProductDetails(String skuId) {
+		logger.info("skuId: " + skuId);
+		Product product = new Product();
+		try {
+			String searchServiceUrl = "http://104.154.92.99/products/";
+			product = restTemplate().getForObject(searchServiceUrl + skuId, Product.class);
+			logger.info("product response: " + product);
+		} catch (HttpClientErrorException e) {
+			e.printStackTrace();
+		}
+		return product;
+	}
+
 }

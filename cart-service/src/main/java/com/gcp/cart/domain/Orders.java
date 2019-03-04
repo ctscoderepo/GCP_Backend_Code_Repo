@@ -27,6 +27,8 @@ public class Orders {
 	private String status;
 	private Date timePlaced;
 	private Date timeUpdate;
+	private String email;
+	private double discount;
 	
 	@PrePersist
 	protected void onCreate() {

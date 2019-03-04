@@ -14,4 +14,5 @@ public class CartServiceConstants {
 	public static String PENDING_ORDER = "P";
 	public static String CONFIRMED_ORDER = "C";
 	public static String CURRENCY = "USD";
+	public static String FULLFILLMENT_TYPE = "ShipToHome";
 }

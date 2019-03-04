@@ -110,12 +110,16 @@ public class CartServiceUtil {
 		order.setTotalTax(Math.round(orderRequest.getPrice() * CartServiceConstants.TAX_RATE) / 100);
 		if (orderRequest.getPrice() < 100)
 			order.setTotalShipping(CartServiceConstants.SHIPPING_CHARGE);
-		else
+		else{
 			order.setTotalShipping(CartServiceConstants.FREE_SHIPPING);
+			order.setDiscount(CartServiceConstants.SHIPPING_CHARGE);
+		}
+			
 		order.setTotalShippingTax(Math.round(order.getTotalShipping() * CartServiceConstants.SHIPPING_TAX_RATE) / 100);
 		order.setCurrency(CartServiceConstants.CURRENCY);
 		order.setStatus(CartServiceConstants.PENDING_ORDER);
-		order.setMemberId(orderRequest.getMemberId());
+		order.setMemberId(orderRequest.getMemberId());		
+		order.setEmail(orderRequest.getEmail());
 		logger.info("End setOrderEntity method: ", CartServiceUtil.class.getName());
 		return order;
 	}
@@ -140,6 +144,7 @@ public class CartServiceUtil {
 		orderItem.setShippingTax(Math.round(orderItem.getShippingCharge() * CartServiceConstants.SHIPPING_TAX_RATE) / 100);
 		orderItem.setCurrency(CartServiceConstants.CURRENCY);
 		orderItem.setStatus(CartServiceConstants.PENDING_ORDER);
+		orderItem.setFullfillmentType(CartServiceConstants.FULLFILLMENT_TYPE);
 		orderItem.setMemberId(orderRequest.getMemberId());
 		logger.info("End setOrderItemEntity method: ", CartServiceUtil.class.getName());
 		return orderItem;
@@ -156,32 +161,32 @@ public class CartServiceUtil {
 		Map<String, String> errorMap = new HashMap<String,String>();
 		if(endPoint.equals("add")){
 			if(null==orderRequest.getProductId() || orderRequest.getProductId().isEmpty()){
-				errorMap.put("productId", "ProductId is required.");
+				errorMap.put("errorMessage", "ProductId is required.");
 			}
 			if(orderRequest.getPrice()==0){
-				errorMap.put("price", "Price is required.");
+				errorMap.put("errorMessage", "Price is required.");
 			}
 			if(orderRequest.getQuantity()==0){
-				errorMap.put("quantity", "Quantity is required.");
+				errorMap.put("errorMessage", "Quantity is required.");
 			}
 		}
 		if(endPoint.equals("update")){
 			if(orderRequest.getOrderItemsId()==0){
-				errorMap.put("orderItemId", "orderItemId is required.");
+				errorMap.put("errorMessage", "orderItemId is required.");
 			}
 			if(orderRequest.getQuantity()==0){
-				errorMap.put("quantity", "Quantity is required.");
+				errorMap.put("errorMessage", "Quantity is required.");
 			}
 		}
 		if(endPoint.equals("checkout")){
 			if(orderRequest.getOrderId()==0){
-				errorMap.put("orderId", "orderId is required.");
+				errorMap.put("errorMessage", "orderId is required.");
 			}
-			if(orderRequest.getMemberId()==0){
-				errorMap.put("memberId", "memberId is required.");
+			if(orderRequest.getMemberId()==0 && orderRequest.getEmail().isEmpty()){
+				errorMap.put("errorMessage", "memberId or email is required.");
 			}
 			if(orderRequest.getAddressId()==0){
-				errorMap.put("addressId", "addressId is required.");
+				errorMap.put("errorMessage", "addressId is required.");
 			}
 		}  
 		
@@ -210,4 +215,5 @@ public class CartServiceUtil {
 		}	
 		return errorMap;
 	}
+	
 }
