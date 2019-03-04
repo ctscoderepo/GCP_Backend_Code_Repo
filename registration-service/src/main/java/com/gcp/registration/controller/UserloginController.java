@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ import com.gcp.registration.service.UserService;
 
 @RestController
 @RequestMapping("/api/login-service")
-//@CrossOrigin
+@CrossOrigin
 public class UserloginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserloginController.class);
@@ -49,7 +50,7 @@ public class UserloginController {
 		logger.debug("User request : ", userDetail);
 		
 		//To validate the request
-		ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+		ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationErrorMessage(result);
         if(errorMap!=null) return errorMap;
         
         Response response = userService.findUserByLogonIdAndPassword(userDetail);		

@@ -11,6 +11,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 /**
@@ -52,5 +55,6 @@ public class Address {
 	private String addressType;
 
 	@OneToOne(mappedBy = "address")
+	@JsonIgnore
 	private User user;
 }
