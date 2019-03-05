@@ -1,6 +1,4 @@
-FROM openjdk:8u171-jdk
-MAINTAINER cts.com
-
-COPY storelocator-0.0.1.jar /opt/storelocator-0.0.1.jar
+FROM openjdk:8-jdk-alpine
+COPY /target/storelocator-0.0.1.jar app.jar
 EXPOSE 8050
-ENTRYPOINT ["java", "-jar", "/opt/storelocator-0.0.1.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
