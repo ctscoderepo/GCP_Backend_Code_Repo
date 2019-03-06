@@ -127,7 +127,8 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 	
 	public ResponseEntity<JsonNode> getTextForImage(JsonNode node) throws URISyntaxException{
 	ResponseEntity<JsonNode> resp;
-	URI serverUrl = new URI("https://vision.googleapis.com/v1/images:annotate?AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
+	URI serverUrl = new URI("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
+	System.out.println("serverUrl: "+serverUrl);
 	System.out.println("call service : "+node.toString());
 		resp = restTemplate().postForEntity(serverUrl, node, JsonNode.class);
 		System.out.println("Got response: "+resp.getBody());
