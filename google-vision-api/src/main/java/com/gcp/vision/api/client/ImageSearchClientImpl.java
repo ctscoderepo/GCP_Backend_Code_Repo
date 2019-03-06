@@ -135,11 +135,14 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 	System.out.println("serverUrl: "+serverUrl);
 	System.out.println("call service : "+node.toString());
 		resp = restTemplate().postForEntity(serverUrl, node, JsonNode.class);
-		if(resp.hasBody()){
+	//	if(resp.hasBody()){
 			JsonNode rootNode = resp.getBody();		
-			System.out.println("rootNode"+rootNode);
+			System.out.println("rootNode: "+rootNode);
 			//To check the highest confidence value
-			JsonNode labelAnnotationList = rootNode.path("labelAnnotations");
+			JsonNode responses = rootNode.get("responses");
+			System.out.println("responses: "+responses);
+			JsonNode labelAnnotationList = rootNode.get("labelAnnotations");
+			System.out.println("labelAnnotationList: "+labelAnnotationList);
 			Iterator<JsonNode> labelItr = labelAnnotationList.elements();
 			      
 			labelItr.forEachRemaining(labelNode -> {
@@ -151,7 +154,7 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 				}
 			});
 			System.out.println("apiResponse: "+apiResponse);
-		}
+		//}
 		System.out.println("Got response: "+resp.getBody());
 		return apiResponse;
 	}
