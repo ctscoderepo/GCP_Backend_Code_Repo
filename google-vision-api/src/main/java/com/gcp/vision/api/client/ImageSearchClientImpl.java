@@ -141,7 +141,9 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 			//To check the highest confidence value
 			JsonNode responses = rootNode.get("responses");
 			System.out.println("responses: "+responses);
-			JsonNode labelAnnotationList = rootNode.get("labelAnnotations");
+			JsonNode labelAnnotationList1 = responses.path("labelAnnotations");
+			System.out.println("labelAnnotationList1: "+labelAnnotationList1);
+			JsonNode labelAnnotationList = responses.get("labelAnnotations");
 			System.out.println("labelAnnotationList: "+labelAnnotationList);
 			Iterator<JsonNode> labelItr = labelAnnotationList.elements();
 			      
