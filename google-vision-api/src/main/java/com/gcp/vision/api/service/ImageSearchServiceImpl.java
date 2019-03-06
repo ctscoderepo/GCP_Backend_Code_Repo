@@ -16,10 +16,10 @@ public class ImageSearchServiceImpl implements ImageSearchService {
 	ImageSearchClient imageSearchClient;
 
 	@Override
-	public FinalResponse decodeImage(String imageUrl) {
+	public FinalResponse decodeImage(JsonNode node) {
 		FinalResponse response = new FinalResponse();
 		try {
-			VisionApiResponse apiResponse = imageSearchClient.getDecodedTextResponse(imageUrl);
+			VisionApiResponse apiResponse = imageSearchClient.getTextForImage(node);
 
 		/*	if (!apiResponse.getErrorMap().isEmpty()) {
 				response.setErrorMap(apiResponse.getErrorMap());

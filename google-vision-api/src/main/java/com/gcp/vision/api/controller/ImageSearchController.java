@@ -21,17 +21,17 @@ public class ImageSearchController {
 	@Autowired
 	protected ImageSearchClient imageSearchClient;
 	
-/*	@PostMapping(path = "/searchImage")
-	public ResponseEntity<?> getProductsList(@RequestBody String imageUrl) throws Exception{
-		FinalResponse response = imageSearchService.decodeImage(imageUrl);	
+	@PostMapping(path = "/searchImage")
+	public ResponseEntity<?> getProductsList(@RequestBody JsonNode node) throws Exception{
+		FinalResponse response = imageSearchService.decodeImage(node);	
 		System.out.println("response: "+response);
 		return new ResponseEntity<FinalResponse>(response, HttpStatus.OK);
-	}*/
+	}
 	
-	@PostMapping(path = "/searchImage")
+	/*@PostMapping(path = "/searchImage")
 	public ResponseEntity<?> getProductsList(@RequestBody JsonNode node) throws Exception{
 		ResponseEntity<?> response = imageSearchClient.getTextForImage(node);	
 		System.out.println("response: "+response);
 		return response;
-	}
+	}*/
 }

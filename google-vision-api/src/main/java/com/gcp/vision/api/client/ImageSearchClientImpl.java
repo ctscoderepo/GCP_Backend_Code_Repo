@@ -1,6 +1,7 @@
 package com.gcp.vision.api.client;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gcp.vision.api.model.VisionApiResponse;
 import com.google.api.client.util.Value;
 import com.google.api.gax.core.FixedCredentialsProvider;
@@ -25,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.springframework.context.annotation.Bean;
@@ -125,14 +127,33 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 	}
 
 	
-	public ResponseEntity<JsonNode> getTextForImage(JsonNode node) throws URISyntaxException{
+	public VisionApiResponse getTextForImage(JsonNode node) throws URISyntaxException{
 	ResponseEntity<JsonNode> resp;
+	VisionApiResponse apiResponse = new VisionApiResponse();
+	
 	URI serverUrl = new URI("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
 	System.out.println("serverUrl: "+serverUrl);
 	System.out.println("call service : "+node.toString());
 		resp = restTemplate().postForEntity(serverUrl, node, JsonNode.class);
+		if(resp.hasBody()){
+			JsonNode rootNode = resp.getBody();		
+			System.out.println("rootNode"+rootNode);
+			//To check the highest confidence value
+			JsonNode labelAnnotationList = rootNode.path("labelAnnotations");
+			Iterator<JsonNode> labelItr = labelAnnotationList.elements();
+			      
+			labelItr.forEachRemaining(labelNode -> {
+				double score = 0.0;  
+				labelItr.next();
+				if (labelNode.get("score").asDouble()>score){
+					score = labelNode.get("score").asDouble();
+					apiResponse.setImageDecodedText(labelNode.get("description").asText());
+				}
+			});
+			System.out.println("apiResponse: "+apiResponse);
+		}
 		System.out.println("Got response: "+resp.getBody());
-		return resp;
+		return apiResponse;
 	}
 	
 	@Override
