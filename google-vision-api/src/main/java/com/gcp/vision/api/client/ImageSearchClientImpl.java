@@ -1,5 +1,6 @@
 package com.gcp.vision.api.client;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.gcp.vision.api.model.VisionApiResponse;
 import com.google.api.client.util.Value;
 import com.google.api.gax.core.FixedCredentialsProvider;
@@ -16,6 +17,9 @@ import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.cloud.vision.v1.ImageAnnotatorSettings;
 import com.google.protobuf.ByteString;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -38,6 +43,12 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 	
 	@Value("${search.service.url}")
 	private String searchServiceUrl;
+	
+	@Value("${google.vision.api.key}")
+	private String visionApiKey;
+	
+	@Value("${google.vision.api.uri}")
+	private String visionApiUri;
 	
 	public VisionApiResponse getDecodedTextResponse(String imageUrl) throws Exception {		 
 		
@@ -113,6 +124,16 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 		return imageAnnotatorSettings;
 	}
 
+	
+	public ResponseEntity<JsonNode> getTextForImage(JsonNode node) throws URISyntaxException{
+	ResponseEntity<JsonNode> resp;
+	URI serverUrl = new URI("https://vision.googleapis.com/v1/images:annotate?AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
+	System.out.println("call service : "+node.toString());
+		resp = restTemplate().postForEntity(serverUrl, node, JsonNode.class);
+		System.out.println("Got response: "+resp.getBody());
+		return resp;
+	}
+	
 	@Override
 	public String searchByDecodedText(String decodedTest) {
 		System.out.println("decodedTest: "+decodedTest);
