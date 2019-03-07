@@ -24,7 +24,7 @@ import com.gcp.registration.service.UserService;
  * This class is rest controller which publish end point.
  */  
 
-//@CrossOrigin
+@CrossOrigin(origins = "http://104.154.86.111") 
 @RestController
 @RequestMapping("/api")
 public class UserloginController {
@@ -57,12 +57,6 @@ public class UserloginController {
 		logger.debug("User response:", response);
 		logger.info("End registerUser method:", UserloginController.class.getName());
 		
-/*		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Access-Control-Allow-Origin", "*");
-		responseHeaders.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-		responseHeaders.add("Access-Control-Allow-Headers", "Content-Type");
-		responseHeaders.add("Access-Control-Max-Age", "3600");
-		ResponseEntity<Response> resp = new ResponseEntity<Response>(response, responseHeaders, HttpStatus.OK);*/
 		ResponseEntity<Response> resp = new ResponseEntity<Response>(response, HttpStatus.OK);
 		return resp;
 	}	
