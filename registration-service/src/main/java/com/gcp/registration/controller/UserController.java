@@ -23,9 +23,9 @@ import com.gcp.registration.service.UserService;
  * 
  * This class is rest controller which publish end point.
  */
-//@CrossOrigin
+@CrossOrigin
 @RestController  
-@RequestMapping("/api/register-user/user")
+@RequestMapping("/api")
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -43,7 +43,7 @@ public class UserController {
 	 * @param result
 	 * @return ResponseEntity<?>
 	 */
-	@PostMapping()
+	@PostMapping("/register-user/user")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result ){
 		logger.info("Start registerUser method: ", UserController.class.getName());
 		logger.debug("User request: ", user.toString());

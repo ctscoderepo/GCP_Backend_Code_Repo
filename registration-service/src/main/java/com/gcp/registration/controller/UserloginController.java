@@ -26,7 +26,7 @@ import com.gcp.registration.service.UserService;
 
 //@CrossOrigin
 @RestController
-@RequestMapping("/api/login-service")
+@RequestMapping("/api")
 public class UserloginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserloginController.class);
@@ -44,7 +44,7 @@ public class UserloginController {
 	 * @param result
 	 * @return ResponseEntity<?>
 	 */
-	@PostMapping()
+	@PostMapping("/login-service")
 	public ResponseEntity<?> authenticateUserLogin(@Valid @RequestBody UserDetail userDetail, BindingResult result ){
 		logger.info("Start authenticateUserLogin method: ", UserloginController.class.getName());
 		logger.debug("User request : ", userDetail);
