@@ -24,7 +24,7 @@ import com.gcp.registration.service.UserService;
  * This class is rest controller which publish end point.
  */  
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 @RequestMapping("/api/login-service")
 public class UserloginController {
