@@ -13,6 +13,6 @@ public interface ImageSearchClient {
 	String searchByDecodedText(String decodedTest);
 	
 	
-	VisionApiResponse getTextForImage(JsonNode node) throws URISyntaxException;
+	VisionApiResponse getTextForImage(JsonNode node) throws Exception;
 
 }

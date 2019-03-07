@@ -2,6 +2,9 @@ package com.gcp.vision.api.client;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gcp.vision.api.model.LabelAnnotations;
+import com.gcp.vision.api.model.Response;
+import com.gcp.vision.api.model.TextLabel;
 import com.gcp.vision.api.model.VisionApiResponse;
 import com.google.api.client.util.Value;
 import com.google.api.gax.core.FixedCredentialsProvider;
@@ -16,7 +19,10 @@ import com.google.cloud.vision.v1.Feature.Type;
 import com.google.cloud.vision.v1.Image;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.cloud.vision.v1.ImageAnnotatorSettings;
+import com.google.gson.JsonParser;
 import com.google.protobuf.ByteString;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,36 +42,36 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class ImageSearchClientImpl implements ImageSearchClient{
-	
+public class ImageSearchClientImpl implements ImageSearchClient {
+
 	@Bean
 	public RestTemplate restTemplate() {
-	    return new RestTemplate();
+		return new RestTemplate();
 	}
-	
+
 	@Value("${search.service.url}")
 	private String searchServiceUrl;
-	
+
 	@Value("${google.vision.api.key}")
 	private String visionApiKey;
-	
+
 	@Value("${google.vision.api.uri}")
 	private String visionApiUri;
-	
-	public VisionApiResponse getDecodedTextResponse(String imageUrl) throws Exception {		 
-		
+
+	public VisionApiResponse getDecodedTextResponse(String imageUrl) throws Exception {
+
 		VisionApiResponse apiResponse = new VisionApiResponse();
 		// Instantiates a client
 		try (ImageAnnotatorClient vision = ImageAnnotatorClient.create(setImageAnnotator())) {
 
 			// The path to the image file to annotate
-			// String fileName = "C:/Users/756896/Desktop/GCPWork/images/electronics/0000035_nikon-d5500-dslr_550.jpeg";			
+			// String fileName =
+			// "C:/Users/756896/Desktop/GCPWork/images/electronics/0000035_nikon-d5500-dslr_550.jpeg";
 			// Reads the image file into memory
-			
+
 			Path path = Paths.get(imageUrl);
 			byte[] data = Files.readAllBytes(path);
-			
-			
+
 			ByteString imgBytes = ByteString.copyFrom(data);
 
 			// Builds the image annotation request
@@ -81,7 +87,7 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 			List<String> errorMsgList = new ArrayList<String>();
 			Map<String, List<String>> errorMap = new HashMap<String, List<String>>();
 			double score = 0.0;
-			
+
 			for (AnnotateImageResponse res : responses) {
 				if (res.hasError()) {
 					System.out.printf("Error: %s\n", res.getError().getMessage());
@@ -90,13 +96,13 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 				errorMap.put("Errors", errorMsgList);
 
 				for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
-					if(annotation.getScore()>score){
-						//To check the highest confidence value
+					if (annotation.getScore() > score) {
+						// To check the highest confidence value
 						score = annotation.getScore();
 						apiResponse.setImageDecodedText(annotation.getDescription());
 					}
-					
-					System.out.println("Description: "+annotation.getDescription());
+
+					System.out.println("Description: " + annotation.getDescription());
 					annotation.getAllFields().forEach((k, v) -> System.out.printf("%s : %s\n", k, v.toString()));
 				}
 				apiResponse.setErrorMap(errorMap);
@@ -106,12 +112,12 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 	}
 
 	public static ImageAnnotatorSettings setImageAnnotator() {
-		Credentials credentials =null;
+		Credentials credentials = null;
 		try {
 			System.out.println("Inside setImageAnnotator");
-			credentials = ComputeEngineCredentials.create();	
+			credentials = ComputeEngineCredentials.create();
 			System.out.println("credentials setImageAnnotator");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		ImageAnnotatorSettings imageAnnotatorSettings = null;
@@ -126,54 +132,54 @@ public class ImageSearchClientImpl implements ImageSearchClient{
 		return imageAnnotatorSettings;
 	}
 
-	
-	public VisionApiResponse getTextForImage(JsonNode node) throws URISyntaxException{
-	ResponseEntity<JsonNode> resp;
-	VisionApiResponse apiResponse = new VisionApiResponse();
-	
-	URI serverUrl = new URI("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
-	System.out.println("serverUrl: "+serverUrl);
-	System.out.println("call service : "+node.toString());
-		resp = restTemplate().postForEntity(serverUrl, node, JsonNode.class);
-	//	if(resp.hasBody()){
-			JsonNode rootNode = resp.getBody();		
-			System.out.println("rootNode: "+rootNode);
-			//To check the highest confidence value
-			JsonNode responses = rootNode.get("responses");
-			System.out.println("responses: "+responses);
-			JsonNode labelAnnotationList1 = responses.path("labelAnnotations");
-			System.out.println("labelAnnotationList1: "+labelAnnotationList1);
-			JsonNode labelAnnotationList = responses.get("labelAnnotations");
-			System.out.println("labelAnnotationList: "+labelAnnotationList);
-			Iterator<JsonNode> labelItr = labelAnnotationList.elements();
-			      
-			labelItr.forEachRemaining(labelNode -> {
-				double score = 0.0;  
-				labelItr.next();
-				if (labelNode.get("score").asDouble()>score){
-					score = labelNode.get("score").asDouble();
-					apiResponse.setImageDecodedText(labelNode.get("description").asText());
-				}
-			});
-			System.out.println("apiResponse: "+apiResponse);
-		//}
-		System.out.println("Got response: "+resp.getBody());
+	public VisionApiResponse getTextForImage(JsonNode node) throws Exception {
+		ResponseEntity<Response> resp;
+		VisionApiResponse apiResponse = new VisionApiResponse();
+
+		URI serverUrl = new URI(
+				"https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
+		System.out.println("serverUrl: " + serverUrl);
+		System.out.println("call service : " + node.toString());
+		resp = restTemplate().postForEntity(serverUrl, node, Response.class);
+		// if(resp.hasBody()){
+	/*	String fileName = "static/test.json";
+		ClassLoader classLoader = new ImageSearchClientImpl().getClass().getClassLoader();
+		File file = new File(classLoader.getResource(fileName).getFile());
+		byte[] jsonData = Files.readAllBytes(file.toPath());*/
+/*		JsonNode response = resp.getBody();
+	//	byte[] jsonData = response.getBytes("utf-8");
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonParser jsonParser = new JsonParser();
+		Response responses = objectMapper.readValues(response, Response.class);*/
+		Response resposne = resp.getBody();
+
+		List<LabelAnnotations> labelAnnotationList = resposne.getResponses();
+		LabelAnnotations labelAnnotation = labelAnnotationList.get(0);
+		labelAnnotation.getLabelAnnotations().parallelStream().forEach(textLabel -> {
+			double score = 0.0;
+			if (textLabel.getScore() > score) {
+				score = textLabel.getScore();
+				apiResponse.setImageDecodedText(textLabel.getDescription());
+			}
+		});
+		System.out.println("apiResponse: " + apiResponse);
+
 		return apiResponse;
 	}
-	
+
 	@Override
 	public String searchByDecodedText(String decodedTest) {
-		System.out.println("decodedTest: "+decodedTest);
-		String result =null;
-		try {				
-			searchServiceUrl="http://104.154.92.99/keywordsearch?keyword=";
-			System.out.println("searchServiceUrl: "+searchServiceUrl);
-				result = restTemplate().getForObject(searchServiceUrl+decodedTest, String.class);	
-			System.out.println("response: "+result);
-		}catch(HttpClientErrorException e) {
+		System.out.println("decodedTest: " + decodedTest);
+		String result = null;
+		try {
+			searchServiceUrl = "http://104.154.92.99/keywordsearch?keyword=";
+			System.out.println("searchServiceUrl: " + searchServiceUrl);
+			result = restTemplate().getForObject(searchServiceUrl + decodedTest, String.class);
+			System.out.println("response: " + result);
+		} catch (HttpClientErrorException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
+
 }
