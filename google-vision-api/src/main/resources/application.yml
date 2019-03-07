@@ -13,4 +13,3 @@ search:
 swagger:
   info: Get Vision Service Info
   basePackage: com.gcp.vision.api.controller
-
