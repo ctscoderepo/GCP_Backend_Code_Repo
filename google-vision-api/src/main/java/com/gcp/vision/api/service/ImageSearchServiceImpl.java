@@ -35,18 +35,18 @@ public class ImageSearchServiceImpl implements ImageSearchService {
 	@Override
 	public FinalResponse decodeImage(JsonNode node) {
 		logger.info("Start decodeImage method:", ImageSearchServiceImpl.class.getName());
-		logger.debug("Request json:", node);
+		logger.info("Request json:", node);
 		FinalResponse response = new FinalResponse();
 		try {
 			//Call the vision api client to get the decoded text for image
 			VisionApiResponse apiResponse = imageSearchClient.getTextForImage(node);
-			logger.debug("Vision api response:", apiResponse);
+			logger.info("Vision api response:", apiResponse);
 			
 			//Call the search service to get the product list based on decoded text
 			if (null != apiResponse && !apiResponse.getImageDecodedText().isEmpty()) {
 				
 				String searchServiceResp = imageSearchClient.searchByDecodedText(apiResponse.getImageDecodedText());
-				logger.debug("Search service response:", searchServiceResp);
+				logger.info("Search service response:", searchServiceResp);
 				if (null != searchServiceResp && !searchServiceResp.isEmpty()) {
 					byte[] jsonData = searchServiceResp.getBytes("utf-8");
 					ObjectMapper objectMapper = new ObjectMapper();
@@ -55,12 +55,12 @@ public class ImageSearchServiceImpl implements ImageSearchService {
 				}
 			}
 			response.setMessage(ImageSearchConstants.SUCCESS_RESPONSE);
-			logger.debug("Search service response:", response);
+			logger.info("Search service response:", response);
 			
 		} catch (Exception ex) {
 			response.setMessage(ImageSearchConstants.ERROR_RESPONSE);
 			response.setErrorMessage(ex.getMessage());
-			logger.debug("Exception:", ex.getCause());			
+			logger.info("Exception:", ex.getMessage());			
 		}		
 		logger.info("End decodeImage method:", ImageSearchServiceImpl.class.getName());
 		return response;

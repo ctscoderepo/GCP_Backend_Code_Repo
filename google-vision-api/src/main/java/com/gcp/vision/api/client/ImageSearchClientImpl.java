@@ -48,16 +48,16 @@ public class ImageSearchClientImpl implements ImageSearchClient {
 	 */
 	public VisionApiResponse getTextForImage(JsonNode node) throws Exception {
 		logger.info("Start getTextForImage method:", ImageSearchClientImpl.class.getName());
-		logger.debug("Request json:", node);
+		logger.info("Request json:", node);
 		ResponseEntity<Response> visionApiResp;
 		VisionApiResponse apiResponse = new VisionApiResponse();
 		
 		//URI visionApiUrl = new URI(visionApiUri+visionApiKey);
 		
 		URI visionApiUrl = new URI("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
-		logger.debug("Vision api end poin url: " + visionApiUrl);
+		logger.info("Vision api end poin url: " + visionApiUrl);
 		visionApiResp = restTemplate().postForEntity(visionApiUrl, node, Response.class);
-		logger.debug("Vision api response: " + visionApiResp.getBody());
+		logger.info("Vision api response: " + visionApiResp.getBody());
 		Response resposne = visionApiResp.getBody();
 
 		List<LabelAnnotations> labelAnnotationList = resposne.getResponses();
@@ -72,7 +72,7 @@ public class ImageSearchClientImpl implements ImageSearchClient {
 			}
 		});
 
-		logger.debug("Descoded text response: " + apiResponse);
+		logger.info("Descoded text response: " + apiResponse);
 		logger.info("End getTextForImage method:", ImageSearchClientImpl.class.getName());
 		return apiResponse;
 	}
@@ -87,14 +87,14 @@ public class ImageSearchClientImpl implements ImageSearchClient {
 	@Override
 	public String searchByDecodedText(String decodedText) throws Exception {
 		logger.info("Start searchByDecodedText method:", ImageSearchClientImpl.class.getName());
-		logger.debug("DecodedText:", decodedText);
+		logger.info("DecodedText:", decodedText);
 		
 		// To call the search service to search decoded image text
 		//searchServiceUrl = searchServiceUrl + decodedText;
 		searchServiceUrl = "http://104.154.92.99/keywordsearch?keyword=" + decodedText;
-		logger.debug("Search service end point url: " + searchServiceUrl);
+		logger.info("Search service end point url: " + searchServiceUrl);
 		String result = restTemplate().getForObject(searchServiceUrl, String.class);
-		logger.debug("Search service response: " + result);
+		logger.info("Search service response: " + result);
 		logger.info("End searchByDecodedText method:", ImageSearchClientImpl.class.getName());
 		return result;
 	}
