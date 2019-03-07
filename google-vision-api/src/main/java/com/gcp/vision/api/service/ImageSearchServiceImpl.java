@@ -59,7 +59,7 @@ public class ImageSearchServiceImpl implements ImageSearchService {
 			
 		} catch (Exception ex) {
 			response.setMessage(ImageSearchConstants.ERROR_RESPONSE);
-			response.setErrorMessage(ex.getCause().getMessage());
+			response.setErrorMessage(ex.getMessage());
 			logger.debug("Exception:", ex.getCause());			
 		}		
 		logger.info("End decodeImage method:", ImageSearchServiceImpl.class.getName());

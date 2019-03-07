@@ -52,9 +52,9 @@ public class ImageSearchClientImpl implements ImageSearchClient {
 		ResponseEntity<Response> visionApiResp;
 		VisionApiResponse apiResponse = new VisionApiResponse();
 		
-		URI visionApiUrl = new URI(visionApiUri+visionApiKey);
+		//URI visionApiUrl = new URI(visionApiUri+visionApiKey);
 		
-		//URI visionApiUrl = new URI("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
+		URI visionApiUrl = new URI("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g");
 		logger.debug("Vision api end poin url: " + visionApiUrl);
 		visionApiResp = restTemplate().postForEntity(visionApiUrl, node, Response.class);
 		logger.debug("Vision api response: " + visionApiResp.getBody());
@@ -90,8 +90,8 @@ public class ImageSearchClientImpl implements ImageSearchClient {
 		logger.debug("DecodedText:", decodedText);
 		
 		// To call the search service to search decoded image text
-		searchServiceUrl = searchServiceUrl + decodedText;
-		//searchServiceUrl = "http://104.154.92.99/keywordsearch?keyword=" + decodedText;
+		//searchServiceUrl = searchServiceUrl + decodedText;
+		searchServiceUrl = "http://104.154.92.99/keywordsearch?keyword=" + decodedText;
 		logger.debug("Search service end point url: " + searchServiceUrl);
 		String result = restTemplate().getForObject(searchServiceUrl, String.class);
 		logger.debug("Search service response: " + result);
