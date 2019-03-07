@@ -40,7 +40,7 @@ public class ImageSearchController {
 		FinalResponse response = imageSearchService.decodeImage(node);	
 		logger.debug("Response json:", response);		
 				
-		if(!response.getErrorMessage().isEmpty()){
+		if(null!= response.getErrorMessage() && !response.getErrorMessage().isEmpty()){
 			return new ResponseEntity<FinalResponse>(response, HttpStatus.SERVICE_UNAVAILABLE);
 		}
 		logger.info("End getProductsList method:", ImageSearchController.class.getName());
