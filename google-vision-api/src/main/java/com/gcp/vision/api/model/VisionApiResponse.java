@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Map;
 import lombok.Data;
 
+/**
+ * @author Anuj Kumar
+ * 
+ * This class is used to hold vision api response decoded text
+ */
 @Data
 public class VisionApiResponse {
 

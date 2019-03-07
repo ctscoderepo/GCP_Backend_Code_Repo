@@ -1,12 +1,16 @@
 package com.gcp.vision.api.model;
 
-import java.util.List;
-import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 
+/**
+ * @author Anuj Kumar
+ * 
+ * This class is used to hold FinalResponse service
+ */
 @Data
 public class FinalResponse {
-	JsonNode products;
-	Map<String, List<String>> errorMap;
+	private JsonNode products;
+	private String errorMessage;
+	private String message;
 }
