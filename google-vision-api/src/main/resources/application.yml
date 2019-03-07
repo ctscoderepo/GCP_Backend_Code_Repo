@@ -1,2 +1,16 @@
-server.port=8024
-search.service.url=http://104.154.92.99/keywordsearch?keyword=
+server:
+  port: 8024
+
+google:
+  api:
+    key: AIzaSyBu0GUKiUnrc20TGT2I4WJxV25oqPOYf7g
+    uri: https://vision.googleapis.com/v1/images:annotate?
+
+search: 
+  service: 
+    uri: http://104.154.92.99/keywordsearch?keyword=
+
+swagger:
+  info: Get Vision Service Info
+  basePackage: com.gcp.vision.api.controller
+
