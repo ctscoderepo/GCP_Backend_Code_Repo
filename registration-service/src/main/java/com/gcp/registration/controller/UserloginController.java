@@ -24,9 +24,9 @@ import com.gcp.registration.service.UserService;
  * This class is rest controller which publish end point.
  */  
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/login-service")
-@CrossOrigin
 public class UserloginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserloginController.class);
@@ -44,7 +44,7 @@ public class UserloginController {
 	 * @param result
 	 * @return ResponseEntity<?>
 	 */
-	@PostMapping("")
+	@PostMapping()
 	public ResponseEntity<?> authenticateUserLogin(@Valid @RequestBody UserDetail userDetail, BindingResult result ){
 		logger.info("Start authenticateUserLogin method: ", UserloginController.class.getName());
 		logger.debug("User request : ", userDetail);
@@ -57,12 +57,13 @@ public class UserloginController {
 		logger.debug("User response:", response);
 		logger.info("End registerUser method:", UserloginController.class.getName());
 		
-		HttpHeaders responseHeaders = new HttpHeaders();
+/*		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Access-Control-Allow-Origin", "*");
 		responseHeaders.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
 		responseHeaders.add("Access-Control-Allow-Headers", "Content-Type");
 		responseHeaders.add("Access-Control-Max-Age", "3600");
-		ResponseEntity<Response> resp = new ResponseEntity<Response>(response, responseHeaders, HttpStatus.OK);
+		ResponseEntity<Response> resp = new ResponseEntity<Response>(response, responseHeaders, HttpStatus.OK);*/
+		ResponseEntity<Response> resp = new ResponseEntity<Response>(response, HttpStatus.OK);
 		return resp;
 	}	
 }

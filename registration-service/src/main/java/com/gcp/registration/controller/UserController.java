@@ -23,9 +23,8 @@ import com.gcp.registration.service.UserService;
  * 
  * This class is rest controller which publish end point.
  */
-
-@RestController  
 @CrossOrigin
+@RestController  
 @RequestMapping("/api/register-user/user")
 public class UserController {
 	
@@ -44,7 +43,7 @@ public class UserController {
 	 * @param result
 	 * @return ResponseEntity<?>
 	 */
-	@PostMapping("")
+	@PostMapping()
 	public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result ){
 		logger.info("Start registerUser method: ", UserController.class.getName());
 		logger.debug("User request: ", user.toString());
@@ -62,13 +61,13 @@ public class UserController {
 			response.setMessage("User registration not couldn't be done successfully.");
 			response.setUserDetails(null);
 		}
-		HttpHeaders responseHeaders = new HttpHeaders();
+	/*	HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Access-Control-Allow-Origin", "*");
 		responseHeaders.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
 		responseHeaders.add("Access-Control-Allow-Headers", "Content-Type");
-		responseHeaders.add("Access-Control-Max-Age", "3600");
+		responseHeaders.add("Access-Control-Max-Age", "3600");*/
 		logger.debug("User response:", registeredUser.toString());
 		logger.info("End registerUser method:", UserController.class.getName());
-		return new ResponseEntity<Response>(response, responseHeaders, HttpStatus.CREATED);		
+		return new ResponseEntity<Response>(response, HttpStatus.CREATED);		
 	}
 }
