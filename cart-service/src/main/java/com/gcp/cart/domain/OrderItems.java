@@ -15,6 +15,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
+/**
+ * @author Anuj Kumar
+ * 
+ * This class represent orderitems entity table
+ */
 @Data
 @Entity
 @Table(name = "orderitems")

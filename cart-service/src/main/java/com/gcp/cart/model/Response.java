@@ -24,4 +24,5 @@ public class Response {
 	private Date timePlaced;
 	private Date timeUpdate;
 	private List<OrderItems> orderItems;
+	private String errorMessage;
 }

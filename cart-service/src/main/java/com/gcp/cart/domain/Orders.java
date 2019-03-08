@@ -10,6 +10,11 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import lombok.Data;
 
+/**
+ * @author Anuj Kumar
+ * 
+ * This class represent orders entity table
+ */
 @Data
 @Entity
 @Table(name = "orders")

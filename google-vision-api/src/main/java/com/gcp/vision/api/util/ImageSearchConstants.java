@@ -8,7 +8,7 @@ package com.gcp.vision.api.util;
 public class ImageSearchConstants {
 	public static final String SUCCESS_RESPONSE = "Success";
 	
-	public static final String ERROR_RESPONSE = "Failed to search image, please check logs for more details";
+	public static final String ERROR_RESPONSE = "Service unavailable.";
 	
 	public static final String SWAGGER_BASE_PACKAGE = "${swagger.basePackage}";
 	
