@@ -1,6 +1,5 @@
 package com.gcp.cart.controller;
 
-import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.gcp.cart.model.OrderRequest;
+import com.gcp.cart.model.OrdersResponse;
 import com.gcp.cart.model.Response;
 import com.gcp.cart.service.CartService;
+import com.gcp.cart.util.CartServiceConstants;
 import com.gcp.cart.util.CartServiceUtil;
 
 /**
@@ -52,6 +53,9 @@ public class CartController {
 			return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
 		}
 		Response resp = cartService.createOrder(orderRequest);
+		if(null!=resp.getErrorMessage() && resp.getErrorMessage().equalsIgnoreCase(CartServiceConstants.ERROR_RESPONSE)){
+			return new ResponseEntity<Response>(resp, HttpStatus.SERVICE_UNAVAILABLE);
+		}
 		logger.debug("Response: " + resp);
 		logger.info("End addItemToCart method: ", CartController.class.getName());
 		return new ResponseEntity<Response>(resp, HttpStatus.CREATED);
@@ -73,10 +77,13 @@ public class CartController {
 		if (!errorMap.isEmpty()) {
 			return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
 		}
-		List<Response> resp = cartService.findOrderByMemberId(Long.parseLong(memberId));
+		OrdersResponse resp = cartService.findOrderByMemberId(Long.parseLong(memberId));
+		if(null!=resp.getErrorMessage() && resp.getErrorMessage().equalsIgnoreCase(CartServiceConstants.ERROR_RESPONSE)){
+			return new ResponseEntity<OrdersResponse>(resp, HttpStatus.SERVICE_UNAVAILABLE);
+		}
 		logger.debug("Response: " + resp);
 		logger.info("End getOrdersByMemberId method: ", CartController.class.getName());
-		return new ResponseEntity<List<Response>>(resp, HttpStatus.OK);
+		return new ResponseEntity<OrdersResponse>(resp, HttpStatus.OK);
 	}
 
 	/**
@@ -95,6 +102,9 @@ public class CartController {
 			return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
 		}
 		Response resp = cartService.updateOrder(orderRequest.getOrderItemsId(), orderRequest.getQuantity());
+		if(null!=resp.getErrorMessage() && resp.getErrorMessage().equalsIgnoreCase(CartServiceConstants.ERROR_RESPONSE)){
+			return new ResponseEntity<Response>(resp, HttpStatus.SERVICE_UNAVAILABLE);
+		}
 		logger.debug("Response: " + resp);
 		logger.info("End updateOrderItemQty method: ", CartController.class.getName());
 		return new ResponseEntity<Response>(resp, HttpStatus.CREATED);
@@ -117,6 +127,9 @@ public class CartController {
 			return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
 		}
 		Response resp = cartService.deleteOrder(Integer.parseInt(orderItemId));
+		if(null!=resp.getErrorMessage() && resp.getErrorMessage().equalsIgnoreCase(CartServiceConstants.ERROR_RESPONSE)){
+			return new ResponseEntity<Response>(resp, HttpStatus.SERVICE_UNAVAILABLE);
+		}
 		logger.debug("Response: " + resp);
 		logger.info("End updateOrderItemQty method: ", CartController.class.getName());
 		return new ResponseEntity<Response>(resp, HttpStatus.CREATED);
@@ -137,6 +150,9 @@ public class CartController {
 			return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
 		}
 		Response resp = cartService.cartCheckout(orderRequest);
+		if(null!=resp.getErrorMessage() && resp.getErrorMessage().equalsIgnoreCase(CartServiceConstants.ERROR_RESPONSE)){
+			return new ResponseEntity<Response>(resp, HttpStatus.SERVICE_UNAVAILABLE);
+		}
 		logger.debug("Response: " + resp);
 		logger.info("End cartCheckout method: ", CartController.class.getName());
 		return new ResponseEntity<Response>(resp, HttpStatus.CREATED);

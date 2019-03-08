@@ -1,8 +1,8 @@
 package com.gcp.cart.service;
 
-import java.util.List;
 import org.springframework.stereotype.Service;
 import com.gcp.cart.model.OrderRequest;
+import com.gcp.cart.model.OrdersResponse;
 import com.gcp.cart.model.Product;
 import com.gcp.cart.model.Response;
 
@@ -44,9 +44,9 @@ public interface CartService {
 	 * This method is set the order item entity
 	 * 
 	 * @param OrderRequest
-	 * @return OrderItems
+	 * @return OrdersResponse
 	 */
-	List<Response> findOrderByMemberId(long memberId);
+	OrdersResponse findOrderByMemberId(long memberId);
 	
 	/**
 	 * This method is used for final checkout
@@ -62,5 +62,5 @@ public interface CartService {
 	 * @param skuId
 	 * @return Product
 	 */
-	Product getProductDetails(String skuId);
+	Product getProductDetails(String skuId) throws Exception;
 }

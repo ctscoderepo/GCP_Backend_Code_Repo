@@ -205,12 +205,12 @@ public class CartServiceUtil {
 		Map<String, String> errorMap = new HashMap<String,String>();
 		if(endPoint.equals("delete")){
 			if(requestParam.isEmpty()){
-				errorMap.put("orderItemId", "OrderItemId is required.");
+				errorMap.put("errorMessage", "OrderItemId is required.");
 			}			
 		}	
 		if(endPoint.equals("byMemberId")){
 			if(requestParam.isEmpty()){
-				errorMap.put("memberId", "MemberId is required.");
+				errorMap.put("errorMessage", "MemberId is required.");
 			}			
 		}	
 		return errorMap;
