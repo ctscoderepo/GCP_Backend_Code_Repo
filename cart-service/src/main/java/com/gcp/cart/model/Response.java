@@ -23,6 +23,7 @@ public class Response {
 	private String status;
 	private Date timePlaced;
 	private Date timeUpdate;
+	private double discount;
 	private List<OrderItems> orderItems;
 	private String errorMessage;
 }

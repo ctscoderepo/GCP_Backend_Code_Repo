@@ -267,13 +267,45 @@ public class CartServiceImpl implements CartService {
 	 */
 	@Override
 	public Product getProductDetails(String skuId) throws Exception {
+		logger.info("Start getProductDetails method: ", CartServiceImpl.class.getName());
 		logger.info("skuId: " + skuId);
 		Product product = new Product();
 		searchServiceUrl = "http://104.154.92.99/products/";
 		logger.info("Search Service Url: " + searchServiceUrl);
 		product = restTemplate().getForObject(searchServiceUrl + skuId, Product.class);
 		logger.info("product response: " + product);
+		logger.info("End getProductDetails method: ", CartServiceImpl.class.getName());
 		return product;
+	}
+
+	/**
+	 * This method is get order details
+	 * 
+	 * @param orderId
+	 * @return Response
+	 */
+	public Response findByOrdersId(int orderId) {
+		logger.info("Start findByOrdersId method: ", CartServiceImpl.class.getName());
+		logger.debug("orderId: " + orderId);
+		Orders order = new Orders();
+		Response resp = new Response();
+		try {
+		if (orderId != 0) {
+			order = ordersRepository.findOrderByOrdersId(orderId);
+			logger.debug("order: " + order);
+		}
+		if (null != order) {
+			List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
+			logger.debug("ordItemList: " + ordItemList);
+			resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
+			logger.debug("Response: " + ordItemList);
+		}
+		} catch (Exception ex) {
+			resp.setErrorMessage(CartServiceConstants.ERROR_RESPONSE);
+			logger.debug("Error occured: ", ex.getMessage());
+		}
+		logger.info("End findByOrdersId method: ", CartServiceImpl.class.getName());
+		return resp;
 	}
 
 }

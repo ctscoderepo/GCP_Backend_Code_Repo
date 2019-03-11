@@ -63,4 +63,13 @@ public interface CartService {
 	 * @return Product
 	 */
 	Product getProductDetails(String skuId) throws Exception;
+	
+	
+	/**
+	 * This method is get order details
+	 * 
+	 * @param orderId
+	 * @return Response
+	 */
+	Response findByOrdersId(int orderId);
 }
