@@ -53,6 +53,7 @@ public class CartServiceUtil {
 		resp.setStatus(order.getStatus());
 		resp.setTimePlaced(order.getTimePlaced());
 		resp.setTimeUpdate(order.getTimeUpdate());
+		resp.setDiscount(order.getDiscount());
 
 		// To set the order items in response
 		resp.setOrderItems(tmpItemList);
@@ -211,6 +212,11 @@ public class CartServiceUtil {
 		if(endPoint.equals("byMemberId")){
 			if(requestParam.isEmpty()){
 				errorMap.put("errorMessage", "MemberId is required.");
+			}			
+		}	
+		if(endPoint.equals("byOrderId")){
+			if(requestParam.isEmpty()){
+				errorMap.put("errorMessage", "OrderId is required.");
 			}			
 		}	
 		return errorMap;

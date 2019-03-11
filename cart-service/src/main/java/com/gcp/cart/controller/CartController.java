@@ -158,4 +158,29 @@ public class CartController {
 		return new ResponseEntity<Response>(resp, HttpStatus.CREATED);
 	}
 	
+	/**
+	 * This end point is used to get list of orders of a customer
+	 * 
+	 * @param orderId
+	 * @return ResponseEntity<?>
+	 */
+	@GetMapping(path = "/byOrderId/{ordersId}")
+	public ResponseEntity<?> getOrdersByOrderId(@PathVariable(value = "ordersId") String orderId) {
+		logger.info("Start getOrdersByOrderId method: ", CartController.class.getName());
+		logger.debug("OrderId: " +orderId);
+
+		// To validate request
+		Map<String, String> errorMap = CartServiceUtil.validateRequestParam(orderId, "byOrderId");
+		if (!errorMap.isEmpty()) {
+			return new ResponseEntity<Map<String, String>>(errorMap, HttpStatus.BAD_REQUEST);
+		}
+		Response resp = cartService.findByOrdersId(Integer.parseInt(orderId));
+		if(null!=resp.getErrorMessage() && resp.getErrorMessage().equalsIgnoreCase(CartServiceConstants.ERROR_RESPONSE)){
+			return new ResponseEntity<Response>(resp, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		logger.debug("Response: " + resp);
+		logger.info("End getOrdersByOrderId method: ", CartController.class.getName());
+		return new ResponseEntity<Response>(resp, HttpStatus.OK);
+	}
+	
 }
