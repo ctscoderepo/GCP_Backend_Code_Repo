@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.gcp.cart.domain.Orders;
+import com.gcp.cart.model.OrderDetail;
 import com.gcp.cart.model.OrderRequest;
 import com.gcp.cart.model.OrdersResponse;
 import com.gcp.cart.model.Product;
@@ -89,11 +90,13 @@ public class CartServiceImpl implements CartService {
 				orderItem.setMemberId(order.getMemberId());
 
 				// Find the product details
+
 				Product product = getProductDetails(orderRequest.getProductId());
 				if (null != product) {
 					orderItem.setProductDesciption(product.getShortDescription());
 					orderItem.setImageUrl(product.getImages().get(0));
 				}
+
 				orderItem = orderItemsRepository.save(orderItem);
 
 				// To re-calculate order & update the DB
@@ -104,6 +107,7 @@ public class CartServiceImpl implements CartService {
 				if (order.getId() != 0) {
 					order = ordersRepository.findOrderByOrdersId(order.getId());
 					resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
+					resp.setMessage(CartServiceConstants.ORDERITEM_ADDED);
 				}
 			}
 		} catch (Exception ex) {
@@ -141,6 +145,7 @@ public class CartServiceImpl implements CartService {
 			// To re-calculate order & update the DB
 			order = ordersRepository.save(CartServiceUtil.recalculateOrder(order, ordItemList));
 			resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
+			resp.setMessage(CartServiceConstants.ORDERITEM_UPDATED);
 		} catch (Exception ex) {
 			resp.setErrorMessage(CartServiceConstants.ERROR_RESPONSE);
 			logger.debug("Error occured: ", ex.getMessage());
@@ -172,7 +177,7 @@ public class CartServiceImpl implements CartService {
 			if (ordItemList.size() == 0) {
 				// To the order from orders table
 				ordersRepository.delete(orderItem.getOrders());
-				return null;
+				resp.setMessage(CartServiceConstants.ORDER_DELETED);
 			} else {
 				// To re-calculate order & update the DB
 				order = ordersRepository.findOrderByOrdersId(orderItem.getOrders().getId());
@@ -180,6 +185,7 @@ public class CartServiceImpl implements CartService {
 
 				// To prepare response with order & order items
 				resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
+				resp.setMessage(CartServiceConstants.ORDERITEM_DELETED);
 			}
 		} catch (Exception ex) {
 			resp.setErrorMessage(CartServiceConstants.ERROR_RESPONSE);
@@ -198,7 +204,7 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public OrdersResponse findOrderByMemberId(long memberId) {
 		logger.info("Start findOrderByMemberId method: ", CartServiceImpl.class.getName());
-		List<Response> finalOrderList = new ArrayList<Response>();
+		List<OrderDetail> finalOrderList = new ArrayList<OrderDetail>();
 		OrdersResponse ordersResp = new OrdersResponse();
 		try {
 			List<Orders> orderList = ordersRepository.findOrderByMemberId(memberId);
@@ -207,10 +213,14 @@ public class CartServiceImpl implements CartService {
 				List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
 
 				// Prepare the response object
-				Response resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
-				finalOrderList.add(resp);
+				OrderDetail orderDetail = CartServiceUtil.prepareFinalOrderListResponse(order, ordItemList);
+				finalOrderList.add(orderDetail);
 			});
 			ordersResp.setOrdersList(finalOrderList);
+			ordersResp.setMessage(CartServiceConstants.ORDERS_LIST);
+			if (orderList.isEmpty()) {
+				ordersResp.setMessage(CartServiceConstants.ORDER_NOT_FOUND);
+			}
 			logger.debug("Orders response : ", ordersResp);
 		} catch (Exception ex) {
 			ordersResp.setErrorMessage(CartServiceConstants.ERROR_RESPONSE);
@@ -235,22 +245,27 @@ public class CartServiceImpl implements CartService {
 		// order
 		try {
 			order = ordersRepository.findOrderByOrdersId(orderRequest.getOrderId());
-			order.setAddressId(orderRequest.getAddressId());
-			order.setMemberId(orderRequest.getMemberId());
-			order.setStatus(CartServiceConstants.CONFIRMED_ORDER);
-			order = ordersRepository.save(order);
-			List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
-			if (!ordItemList.isEmpty()) {
-				ordItemList.parallelStream().forEach(orderItem -> {
-					orderItem.setAddressId(orderRequest.getAddressId());
-					orderItem.setMemberId(orderRequest.getMemberId());
-					orderItem.setStatus(CartServiceConstants.CONFIRMED_ORDER);
-					orderItemsRepository.saveAll(ordItemList);
-				});
+			if (order != null) {
+				order.setAddressId(orderRequest.getAddressId());
+				order.setMemberId(orderRequest.getMemberId());
+				order.setStatus(CartServiceConstants.CONFIRMED_ORDER);
+				order = ordersRepository.save(order);
+				List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
+				if (!ordItemList.isEmpty()) {
+					ordItemList.parallelStream().forEach(orderItem -> {
+						orderItem.setAddressId(orderRequest.getAddressId());
+						orderItem.setMemberId(orderRequest.getMemberId());
+						orderItem.setStatus(CartServiceConstants.CONFIRMED_ORDER);
+						orderItemsRepository.saveAll(ordItemList);
+					});
+					// Prepare the response object
+					resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
+					resp.setMessage(CartServiceConstants.ORDER_PLACED);
+				}
+			} else {
+				resp.setMessage(CartServiceConstants.ORDER_NOT_FOUND);
 			}
 
-			// Prepare the response object
-			resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
 		} catch (Exception ex) {
 			resp.setErrorMessage(CartServiceConstants.ERROR_RESPONSE);
 			logger.debug("Error occured: ", ex.getMessage());
@@ -290,16 +305,19 @@ public class CartServiceImpl implements CartService {
 		Orders order = new Orders();
 		Response resp = new Response();
 		try {
-		if (orderId != 0) {
-			order = ordersRepository.findOrderByOrdersId(orderId);
-			logger.debug("order: " + order);
-		}
-		if (null != order) {
-			List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
-			logger.debug("ordItemList: " + ordItemList);
-			resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
-			logger.debug("Response: " + ordItemList);
-		}
+			if (orderId != 0) {
+				order = ordersRepository.findOrderByOrdersId(orderId);
+				logger.debug("order: " + order);
+			}
+			if (null != order) {
+				List<OrderItems> ordItemList = orderItemsRepository.findOrderItemsByOrdersId(order);
+				logger.debug("ordItemList: " + ordItemList);
+				resp = CartServiceUtil.prepareFinalOrderResponse(order, ordItemList);
+				resp.setMessage(CartServiceConstants.ORDER_DETAILS);
+				logger.debug("Response: " + ordItemList);
+			} else {
+				resp.setMessage(CartServiceConstants.ORDER_NOT_FOUND);
+			}
 		} catch (Exception ex) {
 			resp.setErrorMessage(CartServiceConstants.ERROR_RESPONSE);
 			logger.debug("Error occured: ", ex.getMessage());

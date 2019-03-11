@@ -5,15 +5,8 @@ import java.util.List;
 import com.gcp.cart.domain.OrderItems;
 import lombok.Data;
 
-/**
- * @author Anuj Kumar
- * 
- * This class represent final response which to be consumed by front end
- */
 @Data
-public class Response {
-	private String errorMessage;
-	private String message;
+public class OrderDetail {
 	private int orderId;
 	private long memberId;
 	private long addressId;

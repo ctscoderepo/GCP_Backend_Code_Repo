@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class OrdersResponse {
-	private List<Response> ordersList;
 	private String errorMessage;
+	private String message;
+	private List<OrderDetail> ordersList;
 }

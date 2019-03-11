@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.gcp.cart.controller.CartController;
 import com.gcp.cart.domain.OrderItems;
 import com.gcp.cart.domain.Orders;
+import com.gcp.cart.model.OrderDetail;
 import com.gcp.cart.model.OrderRequest;
 import com.gcp.cart.model.Response;
 
@@ -87,6 +88,7 @@ public class CartServiceUtil {
 		if(totalPrice>100.00){
 			totalShippingCharge = CartServiceConstants.FREE_SHIPPING;
 			totalShippingTax = 0.00;
+			order.setDiscount(CartServiceConstants.SHIPPING_CHARGE);
 		}else{
 			totalShippingCharge = CartServiceConstants.SHIPPING_CHARGE;
 			totalShippingTax = Math.round(totalShippingCharge * CartServiceConstants.SHIPPING_TAX_RATE)/100;
@@ -222,4 +224,44 @@ public class CartServiceUtil {
 		return errorMap;
 	}
 	
+	
+	/**
+	 * This method is used to prepare the final response
+	 * 
+	 * @param Orders
+	 * @param List<OrderItems
+	 * @return Response
+	 */
+	public static OrderDetail prepareFinalOrderListResponse(Orders order, List<OrderItems> ordItemList) {
+		logger.info("Start prepareFinalOrderResponse method: ", CartServiceUtil.class.getName());		
+		OrderDetail orderDetail = new OrderDetail();
+		List<OrderItems> tmpItemList = new ArrayList<>();
+
+		// To make the orders field null in order item
+		if (!ordItemList.isEmpty()) {
+			ordItemList.parallelStream().forEach(orderItem -> {
+				OrderItems item = orderItem;
+				item.setOrders(null);
+				tmpItemList.add(item);
+			});
+		}
+		// To set the orders details in response
+		orderDetail.setOrderId(order.getId());
+		orderDetail.setMemberId(order.getMemberId());
+		orderDetail.setAddressId(order.getAddressId());
+		orderDetail.setTotalPrice(order.getTotalPrice());
+		orderDetail.setTotalShipping(order.getTotalShipping());
+		orderDetail.setTotalTax(order.getTotalTax());
+		orderDetail.setTotalShippingTax(order.getTotalShippingTax());
+		orderDetail.setCurrency(order.getCurrency());
+		orderDetail.setStatus(order.getStatus());
+		orderDetail.setTimePlaced(order.getTimePlaced());
+		orderDetail.setTimeUpdate(order.getTimeUpdate());
+		orderDetail.setDiscount(order.getDiscount());
+
+		// To set the order items in response
+		orderDetail.setOrderItems(tmpItemList);
+		logger.info("End prepareFinalOrderResponse method: ", CartServiceUtil.class.getName());
+		return orderDetail;
+	}
 }

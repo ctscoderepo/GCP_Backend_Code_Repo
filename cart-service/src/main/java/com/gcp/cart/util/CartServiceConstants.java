@@ -17,4 +17,12 @@ public class CartServiceConstants {
 	public static final String FULLFILLMENT_TYPE = "ShipToHome";
 	public static final String SEARCH_SERVICE_URL = "${search.service.url}";
 	public static final String ERROR_RESPONSE = "Service unavailable.";
+	public static final String ORDER_DELETED = "No more items in order hence order is deleted";
+	public static final String ORDERITEM_DELETED = "Order item is deleted";
+	public static final String ORDERITEM_ADDED = "Item added into cart";
+	public static final String ORDERITEM_UPDATED = "Item updated";
+	public static final String ORDER_PLACED = "Order submitted successfully";
+	public static final String ORDER_DETAILS = "Order details";
+	public static final String ORDERS_LIST = "Listed are orders for customer";
+	public static final String ORDER_NOT_FOUND = "No matching order found.";
 }
