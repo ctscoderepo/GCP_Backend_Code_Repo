@@ -22,6 +22,7 @@ import com.gcp.cart.model.Response;
  */
 public class CartServiceUtil {
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+
 	/**
 	 * This method is used to prepare the final response
 	 * 
@@ -30,7 +31,7 @@ public class CartServiceUtil {
 	 * @return Response
 	 */
 	public static Response prepareFinalOrderResponse(Orders order, List<OrderItems> ordItemList) {
-		logger.info("Start prepareFinalOrderResponse method: ", CartServiceUtil.class.getName());		
+		logger.info("Start prepareFinalOrderResponse method: ", CartServiceUtil.class.getName());
 		Response resp = new Response();
 		List<OrderItems> tmpItemList = new ArrayList<>();
 
@@ -85,13 +86,13 @@ public class CartServiceUtil {
 			}
 		}
 		order.setTotalPrice(Math.round(totalPrice));
-		if(totalPrice>100.00){
+		if (totalPrice > 100.00) {
 			totalShippingCharge = CartServiceConstants.FREE_SHIPPING;
 			totalShippingTax = 0.00;
 			order.setDiscount(CartServiceConstants.SHIPPING_CHARGE);
-		}else{
+		} else {
 			totalShippingCharge = CartServiceConstants.SHIPPING_CHARGE;
-			totalShippingTax = Math.round(totalShippingCharge * CartServiceConstants.SHIPPING_TAX_RATE)/100;
+			totalShippingTax = Math.round(totalShippingCharge * CartServiceConstants.SHIPPING_TAX_RATE) / 100;
 		}
 		order.setTotalShipping(totalShippingCharge);
 		order.setTotalTax(totalTax);
@@ -109,19 +110,19 @@ public class CartServiceUtil {
 	public static Orders setOrderEntity(OrderRequest orderRequest) {
 		logger.info("Start setOrderEntity method: ", CartServiceUtil.class.getName());
 		Orders order = new Orders();
-		order.setTotalPrice(Math.round(orderRequest.getPrice()*orderRequest.getQuantity()));
+		order.setTotalPrice(Math.round(orderRequest.getPrice() * orderRequest.getQuantity()));
 		order.setTotalTax(Math.round(orderRequest.getPrice() * CartServiceConstants.TAX_RATE) / 100);
 		if (orderRequest.getPrice() < 100)
 			order.setTotalShipping(CartServiceConstants.SHIPPING_CHARGE);
-		else{
+		else {
 			order.setTotalShipping(CartServiceConstants.FREE_SHIPPING);
 			order.setDiscount(CartServiceConstants.SHIPPING_CHARGE);
 		}
-			
+
 		order.setTotalShippingTax(Math.round(order.getTotalShipping() * CartServiceConstants.SHIPPING_TAX_RATE) / 100);
 		order.setCurrency(CartServiceConstants.CURRENCY);
 		order.setStatus(CartServiceConstants.PENDING_ORDER);
-		order.setMemberId(orderRequest.getMemberId());		
+		order.setMemberId(orderRequest.getMemberId());
 		order.setEmail(orderRequest.getEmail());
 		logger.info("End setOrderEntity method: ", CartServiceUtil.class.getName());
 		return order;
@@ -144,7 +145,8 @@ public class CartServiceUtil {
 			orderItem.setShippingCharge(CartServiceConstants.SHIPPING_CHARGE);
 		else
 			orderItem.setShippingCharge(CartServiceConstants.FREE_SHIPPING);
-		orderItem.setShippingTax(Math.round(orderItem.getShippingCharge() * CartServiceConstants.SHIPPING_TAX_RATE) / 100);
+		orderItem.setShippingTax(
+				Math.round(orderItem.getShippingCharge() * CartServiceConstants.SHIPPING_TAX_RATE) / 100);
 		orderItem.setCurrency(CartServiceConstants.CURRENCY);
 		orderItem.setStatus(CartServiceConstants.PENDING_ORDER);
 		orderItem.setFullfillmentType(CartServiceConstants.FULLFILLMENT_TYPE);
@@ -160,43 +162,43 @@ public class CartServiceUtil {
 	 * @param endPoint
 	 * @return Map<String, String>
 	 */
-	public static Map<String, String> validateRequest(OrderRequest orderRequest, String endPoint){
-		Map<String, String> errorMap = new HashMap<String,String>();
-		if(endPoint.equals("add")){
-			if(null==orderRequest.getProductId() || orderRequest.getProductId().isEmpty()){
+	public static Map<String, String> validateRequest(OrderRequest orderRequest, String endPoint) {
+		Map<String, String> errorMap = new HashMap<String, String>();
+		if (endPoint.equals("add")) {
+			if (null == orderRequest.getProductId() || orderRequest.getProductId().isEmpty()) {
 				errorMap.put("errorMessage", "ProductId is required.");
 			}
-			if(orderRequest.getPrice()==0){
+			if (orderRequest.getPrice() == 0) {
 				errorMap.put("errorMessage", "Price is required.");
 			}
-			if(orderRequest.getQuantity()==0){
+			if (orderRequest.getQuantity() == 0) {
 				errorMap.put("errorMessage", "Quantity is required.");
 			}
 		}
-		if(endPoint.equals("update")){
-			if(orderRequest.getOrderItemsId()==0){
+		if (endPoint.equals("update")) {
+			if (orderRequest.getOrderItemsId() == 0) {
 				errorMap.put("errorMessage", "orderItemId is required.");
 			}
-			if(orderRequest.getQuantity()==0){
+			if (orderRequest.getQuantity() == 0) {
 				errorMap.put("errorMessage", "Quantity is required.");
 			}
 		}
-		if(endPoint.equals("checkout")){
-			if(orderRequest.getOrderId()==0){
+		if (endPoint.equals("checkout")) {
+			if (orderRequest.getOrderId() == 0) {
 				errorMap.put("errorMessage", "orderId is required.");
 			}
-			if(orderRequest.getMemberId()==0 && orderRequest.getEmail().isEmpty()){
-				errorMap.put("errorMessage", "memberId or email is required.");
+			if (orderRequest.getMemberId() == 0) {
+				if (null == orderRequest.getEmail() || orderRequest.getEmail().isEmpty())
+					errorMap.put("errorMessage", "memberId or email is required.");
 			}
-			if(orderRequest.getAddressId()==0){
+			if (orderRequest.getMemberId() != 0 && orderRequest.getAddressId() == 0) {
 				errorMap.put("errorMessage", "addressId is required.");
 			}
-		}  
-		
+		}
+
 		return errorMap;
 	}
-	
-	
+
 	/**
 	 * This method is validate the request param
 	 * 
@@ -204,27 +206,26 @@ public class CartServiceUtil {
 	 * @param endPoint
 	 * @return Map<String, String>
 	 */
-	public static Map<String, String> validateRequestParam(String requestParam, String endPoint){
-		Map<String, String> errorMap = new HashMap<String,String>();
-		if(endPoint.equals("delete")){
-			if(requestParam.isEmpty()){
+	public static Map<String, String> validateRequestParam(String requestParam, String endPoint) {
+		Map<String, String> errorMap = new HashMap<String, String>();
+		if (endPoint.equals("delete")) {
+			if (requestParam.isEmpty()) {
 				errorMap.put("errorMessage", "OrderItemId is required.");
-			}			
-		}	
-		if(endPoint.equals("byMemberId")){
-			if(requestParam.isEmpty()){
+			}
+		}
+		if (endPoint.equals("byMemberId")) {
+			if (requestParam.isEmpty()) {
 				errorMap.put("errorMessage", "MemberId is required.");
-			}			
-		}	
-		if(endPoint.equals("byOrderId")){
-			if(requestParam.isEmpty()){
+			}
+		}
+		if (endPoint.equals("byOrderId")) {
+			if (requestParam.isEmpty()) {
 				errorMap.put("errorMessage", "OrderId is required.");
-			}			
-		}	
+			}
+		}
 		return errorMap;
 	}
-	
-	
+
 	/**
 	 * This method is used to prepare the final response
 	 * 
@@ -233,7 +234,7 @@ public class CartServiceUtil {
 	 * @return Response
 	 */
 	public static OrderDetail prepareFinalOrderListResponse(Orders order, List<OrderItems> ordItemList) {
-		logger.info("Start prepareFinalOrderResponse method: ", CartServiceUtil.class.getName());		
+		logger.info("Start prepareFinalOrderResponse method: ", CartServiceUtil.class.getName());
 		OrderDetail orderDetail = new OrderDetail();
 		List<OrderItems> tmpItemList = new ArrayList<>();
 
