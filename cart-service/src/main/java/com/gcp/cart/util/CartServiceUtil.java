@@ -34,7 +34,7 @@ public class CartServiceUtil {
 		logger.info("Start prepareFinalOrderResponse method: ", CartServiceUtil.class.getName());
 		Response resp = new Response();
 		List<OrderItems> tmpItemList = new ArrayList<>();
-		// Test Demo
+		
 		// To make the orders field null in order item
 		if (!ordItemList.isEmpty()) {
 			ordItemList.parallelStream().forEach(orderItem -> {
