@@ -1,0 +1,8 @@
+{
+  "name": "payment-service",
+  "version": "0.0.1",
+  "dependencies": {
+    "stripe": "latest"
+  }
+
+}
