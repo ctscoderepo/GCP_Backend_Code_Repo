@@ -31,7 +31,7 @@ public class SearchController {
                                              @RequestParam(required = false) String filterOptions, String sortBy) {
         return service.searchByKeyword(keyword, getFilterOptions(Optional.ofNullable(filterOptions)), Constants.toSortBy(sortBy));
     }
-
+// Test Demo
     @GetMapping("/search")
     @SneakyThrows
     public SearchResult executeGuidedSearch(String category1, String category2,
