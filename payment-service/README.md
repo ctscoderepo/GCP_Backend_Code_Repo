@@ -1,0 +1,1 @@
+Note: You need to update Stripes secret key to complete Stipes integration.
