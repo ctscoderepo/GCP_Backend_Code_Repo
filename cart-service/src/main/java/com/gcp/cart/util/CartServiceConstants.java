@@ -25,4 +25,5 @@ public class CartServiceConstants {
 	public static final String ORDER_DETAILS = "Order details";
 	public static final String ORDERS_LIST = "Listed are orders for customer";
 	public static final String ORDER_NOT_FOUND = "No matching order found.";
+	public static final String TEST_COMMIT= "TEST_COMMIT";
 }
