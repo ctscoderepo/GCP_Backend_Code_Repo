@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,5 +46,11 @@ public class ImageSearchController {
 		}
 		logger.info("End getProductsList method:", ImageSearchController.class.getName());
 		return new ResponseEntity<FinalResponse>(response, HttpStatus.OK);
+	}	
+	
+
+	@GetMapping(path = "/check")
+	public ResponseEntity<?> checkServiceStatus() {				
+		return new ResponseEntity<String>("true", HttpStatus.OK);
 	}	
 }

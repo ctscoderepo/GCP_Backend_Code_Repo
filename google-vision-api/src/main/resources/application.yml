@@ -1,5 +1,7 @@
 server:
   port: 8024
+  servlet:
+    context-path: /visionapi
 
 google:
   api:
@@ -9,7 +11,3 @@ google:
 search: 
   service: 
     uri: http://104.154.92.99/keywordsearch?keyword=
-
-swagger:
-  info: Get Vision Service Info
-  basePackage: com.gcp.vision.api.controller
