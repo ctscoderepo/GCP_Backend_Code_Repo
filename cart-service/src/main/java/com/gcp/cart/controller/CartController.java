@@ -183,4 +183,9 @@ public class CartController {
 		return new ResponseEntity<Response>(resp, HttpStatus.OK);
 	}
 	
+	@GetMapping(path = "/check")
+	public ResponseEntity<?> checkServiceStatus() {				
+		return new ResponseEntity<String>("true", HttpStatus.OK);
+	}	
+	
 }

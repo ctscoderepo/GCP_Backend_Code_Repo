@@ -8,6 +8,8 @@ import com.gcp.demo.model.SearchResult;
 import com.gcp.demo.service.SearchService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,5 +53,10 @@ public class SearchController {
             return Optional.empty();
         return Optional.of(mapper.readValue(filterOptions.get(), FilterOptions.class));
     }
+    
+    @GetMapping(path = "/check")
+	public ResponseEntity<?> checkServiceStatus() {				
+		return new ResponseEntity<String>("true", HttpStatus.OK);
+	}	
 
 }
