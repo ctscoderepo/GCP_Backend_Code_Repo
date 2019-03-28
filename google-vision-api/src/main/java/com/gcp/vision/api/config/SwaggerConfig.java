@@ -1,38 +1,33 @@
 package com.gcp.vision.api.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.gcp.vision.api.util.ImageSearchConstants;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
 /**
  * @author Anuj Kumar
  * 
- *   This class is to have swagger configuration
+ *         This class is to have swagger configuration
  */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-
-	@Value(ImageSearchConstants.SWAGGER_INFO)
-	private String swaggerInfo;
-	
-	@Value(ImageSearchConstants.SWAGGER_BASE_PACKAGE)
-	private String basePackage;
-
 	@Bean
-	public Docket productApi() {
-		Docket docket = new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.basePackage(basePackage))
-				.build();
-		docket.useDefaultResponseMessages(false);
+	public Docket newsApi() {
+		Docket docket = new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.gcp.vision.api.controller")).paths(PathSelectors.any())
+				.build().apiInfo(apiInfo());
 		return docket;
+	}
 
+	private ApiInfo apiInfo() {
+		return new ApiInfoBuilder().title("Vision Service")
+				.description("Service used to search image and get the list of related products.").version("1.0").build();
 	}
 }
