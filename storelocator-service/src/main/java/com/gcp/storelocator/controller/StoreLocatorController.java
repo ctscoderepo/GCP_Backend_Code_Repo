@@ -28,7 +28,7 @@ public class StoreLocatorController {
 	 public ResponseEntity<List<StoreDetail>> getStoresForLatLong(@RequestParam("lat") String lat, @RequestParam("lng") String lng, Model model) {
 		 
 		 List<StoreDetail> storeRecords = storeLocatorService.getStoresForLatLong(lat, lng);
-		 logger.info("Store Records: ", storeRecords);
+		 logger.info("Store records: ", storeRecords);
 		 model.addAttribute("storeData", storeRecords);	
 		return new ResponseEntity<>(storeRecords, HttpStatus.OK);
 	 }
@@ -37,7 +37,7 @@ public class StoreLocatorController {
 	 public ResponseEntity<String> getGeoCode(@RequestParam("address") String address, Model model) {
 		 
 		 String geoCode = storeLocatorService.getLatLong(address);
-		 logger.info("GeoCode Info: ", geoCode);
+		 logger.info("GeoCode info: ", geoCode);
 		 model.addAttribute("geocode", geoCode);	
 		return new ResponseEntity<String>(geoCode, HttpStatus.OK);
 	 }
@@ -46,9 +46,8 @@ public class StoreLocatorController {
 	 public ResponseEntity<List<StoreDetail>> getStoreDetails(@RequestParam("address") String address, @RequestParam("radius") String radius, Model model) {
 		 
 		 List<StoreDetail> storeRecords = storeLocatorService.getStoreDetails(address,radius);
-		 logger.info("Store Records: ", storeRecords);
+		 logger.info("Store records: ", storeRecords);
 		 model.addAttribute("storeData", storeRecords);	
 		return new ResponseEntity<>(storeRecords, HttpStatus.OK);
 	 }
-
 }
