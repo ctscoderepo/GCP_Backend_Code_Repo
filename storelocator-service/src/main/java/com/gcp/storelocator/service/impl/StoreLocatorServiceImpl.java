@@ -2,14 +2,11 @@ package com.gcp.storelocator.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import com.gcp.storelocator.controller.StoreLocatorController;
 import com.gcp.storelocator.dao.StoreLocatorDAO;
 import com.gcp.storelocator.model.StoreDetail;
 import com.gcp.storelocator.service.StoreLocatorService;
