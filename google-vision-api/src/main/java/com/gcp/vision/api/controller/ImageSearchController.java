@@ -34,7 +34,7 @@ public class ImageSearchController {
 	 * @param JsonNode
 	 * @return ResponseEntity<?>
 	 */
-	@PostMapping(path = "/searchImage")
+	@PostMapping(path = "/vision/searchImage")
 	public ResponseEntity<?> getProductsList(@RequestBody JsonNode node) {
 		logger.info("Start getProductsList method:", ImageSearchController.class.getName());
 		logger.debug("Request json:", node);
@@ -49,7 +49,7 @@ public class ImageSearchController {
 	}	
 	
 
-	@GetMapping(path = "/check")
+	@GetMapping(path = "/vision/check")
 	public ResponseEntity<?> checkServiceStatus() {				
 		return new ResponseEntity<String>("true", HttpStatus.OK);
 	}	
