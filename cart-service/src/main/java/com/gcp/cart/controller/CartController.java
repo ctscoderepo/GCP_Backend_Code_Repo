@@ -29,7 +29,7 @@ import com.gcp.cart.util.CartServiceUtil;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/cart")
 public class CartController {
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
 

@@ -24,7 +24,7 @@ import com.gcp.registration.service.UserService;
  */  
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/register")
 public class UserloginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserloginController.class);
