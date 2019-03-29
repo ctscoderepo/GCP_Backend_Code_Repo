@@ -36,8 +36,7 @@ public class StoreLocatorServiceImpl implements StoreLocatorService {
 		double latitude = Double.parseDouble(lat);
 		double longitude = Double.parseDouble(lng);
 
-		List<StoreDetail> records = storeLocatorDAO.searchStores(latitude, longitude, defaultRadius);
-		return records;
+		return storeLocatorDAO.searchStores(latitude, longitude, defaultRadius);		
 	}
 
 	@Override
@@ -47,11 +46,13 @@ public class StoreLocatorServiceImpl implements StoreLocatorService {
 		final GeocodingResult[] results;
 		try {
 			results = getGeocodingResult(address);
-			final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			if (null != results[0]) {
-				response = gson.toJson(results[0].geometry.location);
+			if (null != results) {
+				final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				if (null != results[0]) {
+					response = gson.toJson(results[0].geometry.location);
+				}
 			}
-		} catch (final Exception e) {
+		} catch (Exception e) {
 			logger.error("Error while getting lat/long: ", e.getMessage());
 		}
 		return response;
@@ -78,7 +79,7 @@ public class StoreLocatorServiceImpl implements StoreLocatorService {
 					records = storeLocatorDAO.searchStores(lat, lng, radius);
 				}
 
-			} catch (final Exception e) {
+			} catch (Exception e) {
 				logger.error("Error while getting stores: ", e.getMessage());
 			}
 		}
@@ -92,7 +93,7 @@ public class StoreLocatorServiceImpl implements StoreLocatorService {
 		try {
 			final GeoApiContext context = new GeoApiContext.Builder().apiKey(api_key).build();
 			results = GeocodingApi.geocode(context, address).await();
-		} catch (final Exception e) {
+		} catch (Exception e) {
 			logger.error("Error while getting geocode from Google : ", e.getMessage());
 		}
 		return results;
