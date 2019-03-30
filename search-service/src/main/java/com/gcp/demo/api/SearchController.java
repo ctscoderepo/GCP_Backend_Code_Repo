@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @CrossOrigin
-@RestController("/api")
+@RestController()
 public class SearchController {
 
     private ObjectMapper mapper = new ObjectMapper();
