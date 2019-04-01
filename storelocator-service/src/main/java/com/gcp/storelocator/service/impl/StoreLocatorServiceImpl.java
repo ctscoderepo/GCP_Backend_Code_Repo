@@ -48,6 +48,7 @@ public class StoreLocatorServiceImpl implements StoreLocatorService {
 			results = getGeocodingResult(address);
 			if (null != results) {
 				final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				System.out.println("gson: "+gson.toString());
 				if (null != results[0]) {
 					response = gson.toJson(results[0].geometry.location);
 				}
@@ -93,6 +94,7 @@ public class StoreLocatorServiceImpl implements StoreLocatorService {
 		try {
 			final GeoApiContext context = new GeoApiContext.Builder().apiKey(api_key).build();
 			results = GeocodingApi.geocode(context, address).await();
+			System.out.println("results: "+results.toString());
 		} catch (Exception e) {
 			logger.error("Error while getting geocode from Google : ", e.getMessage());
 		}
