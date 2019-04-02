@@ -91,7 +91,7 @@ public class ImageSearchClientImpl implements ImageSearchClient {
 		
 		// To call the search service to search decoded image text
 		//searchServiceUrl = searchServiceUrl + decodedText;
-		searchServiceUrl = "https://35.227.204.18/keywordsearch?keyword=" + decodedText;
+		searchServiceUrl = "http://104.154.92.99/keywordsearch?keyword=" + decodedText;
 		logger.info("Search service end point url: " + searchServiceUrl);
 		String result = restTemplate().getForObject(searchServiceUrl, String.class);
 		logger.info("Search service response: " + result);
