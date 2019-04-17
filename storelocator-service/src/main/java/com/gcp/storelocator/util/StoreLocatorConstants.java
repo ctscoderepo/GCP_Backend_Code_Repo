@@ -4,7 +4,7 @@ public class StoreLocatorConstants {
 
 	public static final String  TABLE_NAME_STORES="stores";
 	
-	//public static final String TEST_DEMO="Test_Demo";	
+	public static final String TEST_DEMO="Test_Demo";	
 
 	public static final String RADIUS="${store.radius}";
 
